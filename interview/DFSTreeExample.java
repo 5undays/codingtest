@@ -23,8 +23,8 @@ public class DFSTreeExample {
         root.right.left = new Node(6);
         root.right.right = new Node(7);
 
-        DFSTreeExample treeIntro = new DFSTreeExample();
-        treeIntro.inOrder(root);
+        DFSTreeExample example = new DFSTreeExample();
+        //example.inOrder(root);
         //treeIntro.preOrder(root);
     }
 
@@ -39,7 +39,7 @@ public class DFSTreeExample {
         while(true) {
             while (root != null) {
                 stack.push(root);
-                //root = root.left;
+                root = root.left;
             }
             
             if (stack.isEmpty()) {
