@@ -16,11 +16,9 @@ public class BOJ_2512 {
 
     public int solution(int[] budgets, int M) {
         int answer = 0;
-
-        Arrays.sort(budgets);
-
+        
         int left = 0;
-        int right = budgets[budgets.length-1];
+        int right = budgets[budgets.length - 1];
 
         while (left <= right) {
             answer = (left + right) / 2;
@@ -33,15 +31,16 @@ public class BOJ_2512 {
         return right;
     }
 
+    // 정해진 예산에 맞는지 확인 
     private boolean condition(int[] budgets, int answer, int M) {
         int totalBudget = 0;
-        for (int i = 0; i < budgets.length ; i++) {
+        for (int i = 0; i < budgets.length; i++) {
             if (budgets[i] >= answer) {
                 totalBudget += answer;
-            } else { 
+            } else {
                 totalBudget += budgets[i];
             }
-        }  
+        }
 
         if (totalBudget > M) {
             return false;
