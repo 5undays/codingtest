@@ -24,31 +24,29 @@ public class DFSTreeExample {
         root.right.right = new Node(7);
 
         DFSTreeExample example = new DFSTreeExample();
+        example.preOrder(root);
         //example.inOrder(root);
-        //treeIntro.preOrder(root);
+        //example.postOrder(root);
     }
 
-    // pre-order iteration
+    // preorder iterator
     private void preOrder(Node root) {
         if (root == null) {
             return;
         }
         
         Stack<Node> stack = new Stack<>();
-        
-        while(true) {
-            while (root != null) {
-                stack.push(root);
-                root = root.left;
-            }
-            
-            if (stack.isEmpty()) {
-                break;
-            }
-            
+        stack.push(root);
+        while(!stack.isEmpty()) {
             root = stack.pop();
             System.out.println(root.value);
-            root = root.right;
+            // right 항목은 left 보다 나중에 처리 되어야 함
+            if (root.right != null){
+                stack.push(root.right);
+            }
+            if (root.left != null) {
+                stack.push(root.left);
+            }
         }
     }
 
@@ -76,18 +74,18 @@ public class DFSTreeExample {
         }
     }
 
-    
-
     // post-Order iteration
     private void postOrder(Node root) {
         if (root == null) {
             return;
         }
         
+        // 빈 스택을 생성한다
         Stack<Node> stack = new Stack<>();
         
         while(true) {
             while (root != null) {
+                stack.push(root);
                 stack.push(root);
                 root = root.left;
             }
@@ -97,8 +95,13 @@ public class DFSTreeExample {
             }
             
             root = stack.pop();
-            System.out.println(root.value);
-            root = root.right;
+            // root를 두번 넣어 root.right 항목을 출력보다 먼저 처리 할수 있게 함
+            if (!stack.isEmpty() && stack.peek() == root) {
+                root = root.right;
+            } else {
+                System.out.println(root.value);
+                root = null; // 터미널 노드 초기화 필수
+            }
         }
     }
     
