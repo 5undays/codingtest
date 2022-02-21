@@ -45,4 +45,23 @@ public class BaseStation {
         }
         return addCnt;
     }
+
+    // 다른 풀이
+    private int solution2(int n, int[] stations, int w) {
+        int answer = 0;
+        int position = 1;
+        // Queue<Integer> station = new LinkedList<>();
+        // for (int s: station) { station.add(s); }
+        int station = 0;
+        while (position <= n) {
+            if (stations[station] - w <= position) {
+                position += stations[station] + w + 1;
+                station++;
+            } else {
+                answer++;
+                position += w * 2 + 1;
+            }
+        }
+        return answer;
+    }
 }
