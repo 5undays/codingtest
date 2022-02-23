@@ -29,20 +29,6 @@ public class BOJ_1697 {
             condition(now - 1, now);
             condition(now + 1, now);
             condition(now * 2, now);
-            // if (condition(now - 1)) {
-                //     queue.add(now - 1);
-                //     check[now - 1] = true;
-                //     dist[now - 1] = dist[now] + 1;
-                // }
-            // if (condition(now + 1)) {
-                //     queue.add(now + 1);
-            //     check[now + 1] = true;
-            //     dist[now + 1] = dist[now] + 1;
-            // }
-            // if (condition(now * 2)) {
-            //     queue.add(now * 2);
-            //     check[now * 2] = true;
-            // }
         }
         System.out.println(dist[k]);
     }
