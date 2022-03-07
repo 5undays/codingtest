@@ -26,7 +26,7 @@ public class Camouflage {
         for (String method : methods.keySet()) {
             answer *= methods.get(method) + 1;
         }
-        return answer;
+        return answer - 1;
     }
 
 }
