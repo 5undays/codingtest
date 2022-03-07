@@ -1,5 +1,6 @@
 package programmers;
 
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class Camouflage {
@@ -15,13 +16,15 @@ public class Camouflage {
     }
 
     private int solution(String[][] clothes) {
-        int answer = 0;
-        HashSet<String> methods = new HashSet<>();
+        int answer = 1;
+        HashMap<String, Integer> methods = new HashMap<>();
         for (int i = 0; i < clothes.length; i++) {
             String method = clothes[i][1];
-            if (!methods.contains(method)) {
-                methods.add(method);
-            }
+            methods.put(method, methods.getOrDefault(method, 0) + 1);
+        }
+
+        for (String method : methods.keySet()) {
+            answer *= methods.get(method) + 1;
         }
         return answer;
     }
