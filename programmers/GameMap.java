@@ -6,7 +6,8 @@ public class GameMap {
     public static void main(String[] args) {
         GameMap gameMap = new GameMap();
         int answer1 = gameMap
-                .solution(new int[][] { { 1, 0, 1, 1, 1 }, { 1, 0, 1, 0, 1 }, { 1, 0, 1, 1, 1 }, { 1, 1, 1, 0, 1 },
+                .solution(new int[][] { { 1, 0, 1, 1, 1 }, 
+                { 1, 0, 1, 0, 1 }, { 1, 0, 1, 1, 1 }, { 1, 1, 1, 0, 1 },
                         { 0, 0, 0, 0, 1 } });
         int answer2 = gameMap
                 .solution(new int[][] { { 1, 0, 1, 1, 1 }, { 1, 0, 1, 0, 1 }, { 1, 0, 1, 1, 1 }, { 1, 1, 1, 0, 0 },
@@ -16,32 +17,54 @@ public class GameMap {
     }
 
     int width, height;
-    // int[][] visited;
-    int[][] maps;
+    int[][] visited;
     LinkedList<Node> queue;
+    int[][] maps;
+
+    int[] dx = {1, 0, -1, 0};
+    int[] dy = {0, 1, 0, -1};
 
     public int solution(int[][] maps) {
-        this.maps = maps;
-        width = maps[0].length; // 가로 길이
-        height = maps.length; // 세로 길이
         int answer = 0;
         queue = new LinkedList<>();
         Node node = new Node();
-        int[][] visited = new int[width][height];
         // 처음 위치
         node.x = node.y = 0;
         queue.add(node);
-        visited[0][0] = 1;
+        
+        width = maps[0].length; // 가로 길이
+        height = maps.length; // 세로 길이
+        this.maps = new int[width][height];
+        visited = new int[width][height];
+        visited[node.x][node.y] = 1;
+        this.maps = maps;
 
         while (!queue.isEmpty()) {
             Node next = queue.remove();
-            if (visited[next.x][next.y] == 0) { // 방문 한 곳인지 확인
-                // 방문 가능한 모든 경우의 수
-                visit(next.x, next.y, next.x + 1, next.y, visited);
-                visit(next.x, next.y, next.x, next.y + 1, visited);
-                visit(next.x, next.y, next.x - 1, next.y, visited);
-                visit(next.x, next.y, next.x, next.y - 1, visited);
+            int cX = next.x;
+            int cY = next.y;
+
+            for(int i = 0; i < 4; i++){
+                int nX = cX + dx[i];
+                int nY = cY + dy[i];
+                
+                if(nX < 0 || nX > maps.length-1 || nY < 0 || nY > maps[0].length-1)
+                    continue;
+                
+                if(visited[nX][nY] == 0 && maps[nX][nY] == 1){
+                    visited[nX][nY] = visited[cX][cY] + 1;
+                    Node aa = new Node();
+                    aa.x = nX;
+                    aa.y = nY;
+                    queue.add(aa);
+                }
             }
+
+            // 방문 가능한 모든 경우의 수
+            // visit(next.x, next.y, next.x + 1, next.y);
+            // visit(next.x, next.y, next.x, next.y + 1);
+            // visit(next.x, next.y, next.x - 1, next.y);
+            // visit(next.x, next.y, next.x, next.y - 1);
         }
 
         answer = visited[width - 1][height - 1];
@@ -49,11 +72,14 @@ public class GameMap {
     }
 
     // 방문 여부 확인
-    public void visit(int x, int y, int addX, int addY, int[][] visited) {
+    public void visit(int x, int y, int addX, int addY) {
+        System.out.println(x + "," + y + "," + addX + "," + addY);
         Node node = new Node();
         node.x = x + addX;
         node.y = y + addY;
         if (valid(node)) {
+            //System.out.println("x : " + x + ", y : "+ y);
+            System.out.println("node.x : " + node.x + ", node.y : "+ node.y);
             visited[node.x][node.y] = visited[x][y] + 1;
             queue.add(node);
         }
@@ -64,9 +90,10 @@ public class GameMap {
         boolean isValid = false;
         if (0 <= node.x && node.x < width // x 범위
                 && 0 <= node.y && node.y < height // y범위
-                && maps[node.x][node.y] == 1 // 갈 수 있는 위치인지 확인한다
-        ) {
-            isValid = true;
+                && visited[node.x][node.y] == 0 // 방문 한 장소인지 확인
+                && maps[node.x][node.y] == 1// 갈 수 있는 위치인지 확인한다
+                ) { 
+            isValid = true; 
         }
         return isValid;
     }
