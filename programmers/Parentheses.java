@@ -14,29 +14,29 @@ public class Parentheses {
         System.out.println(answer2);
     }
 
-    private int solution() {
-        boolean answer = false;
-        
-        Stack<Character> a = new Stack<Character>();
-        
-        for(int i=0; i<s.length(); i++) {            
-            if(s.charAt(i)=='(') {
-                a.push(s.charAt(i));
-            }
-            //answer를 false로 초기화 해놓고 바로 return을 해줘야 시간초과가 나지 않는다.
-            else {
-                if(a.isEmpty()) {
-                    return answer;
-                } else if(a.pop()!='(') {
-                    return answer;
-                }
-            }
+    class P {
+        int open, close;
+        P(int open, int close) {
+            this.open = open;
+            this.close = close;
         }
-        
-        if(a.isEmpty()) {
-            answer = true;
+    }
+
+    private int solution(int n) {
+        int answer = 0;
+        Stack<P> s = new Stack<>();
+        s.push(new P(0,0));
+        while (!s.isEmpty()) {
+            P p = s.pop();
+            if (p.open > n) continue;
+            if (p.open < p.close) continue;
+            if (p.open + p.close == 2*n) {
+                answer++;
+                continue;
+            }
+            s.push(new P (p.open+1, p.close));
+            s.push(new P (p.open, p.close+1));
         }
- 
         return answer;
     }
 }
