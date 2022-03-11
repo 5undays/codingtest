@@ -2,7 +2,7 @@ package programmers;
 
 import java.util.Stack;
 
-// 올바른 괄호
+// 올바른 괄호 개수
 // https://programmers.co.kr/learn/courses/30/lessons/12909
 public class Parentheses {
 

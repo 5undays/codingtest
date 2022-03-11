@@ -6,7 +6,7 @@ public class Triangle {
 
     public static void main(String args[]) {
         Triangle triangle = new Triangle();
-        int answer = triangle.solution(new int[][] { { 7 }, { 3, 8 }, { 8, 1, 0 }, { 2, 7, 4, 4 }, { 4, 5, 2, 6, 5 } });
+        int answer = triangle.solution1(new int[][] { { 7 }, { 3, 8 }, { 8, 1, 0 }, { 2, 7, 4, 4 }, { 4, 5, 2, 6, 5 } });
         System.out.println(answer);
     }
 
@@ -27,5 +27,16 @@ public class Triangle {
             }
         }
         return answer;
+    }
+
+    public int solution1(int[][] triangle) {
+        for (int i = triangle.length - 2; i >= 0; i--) {
+            for (int j = 0; j < triangle[i].length; j++) {
+                int left = triangle[i][j] + triangle[i + 1][j];
+                int right = triangle[i][j] + triangle[i + 1][j + 1];
+                triangle[i][j] = Math.max(left, right);
+            }
+        }
+        return triangle[0][0];
     }
 }
