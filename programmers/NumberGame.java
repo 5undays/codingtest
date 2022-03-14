@@ -28,26 +28,24 @@ public class NumberGame {
         }
         return answer;
     }
-    
+
     private int solution1(int[] A, int[] B) {
         int answer = 0;
         Arrays.sort(A);
         Arrays.sort(B);
-        int idxA = A.length - 1, idxB = idxA;  
+        int idxA = A.length - 1, idxB = idxA;
         while (idxA >= 0) {
             if (A[idxA] < B[idxB]) {
                 answer++;
                 idxB--;
             }
             idxA--;
-            System.out.println("idxB :"+ idxB);
-        } 
+            System.out.println("idxB :" + idxB);
+        }
         return answer;
     }
 
-    
-
-    // new int[] { 1, 2, 3, 4 }, new int[] { 1, 1, 2, 3 } 예외처리 필요 
+    // new int[] { 1, 2, 3, 4 }, new int[] { 1, 1, 2, 3 } 예외처리 필요
     private int solution2(int[] A, int[] B) {
         int answer = 0;
         Arrays.sort(A);
