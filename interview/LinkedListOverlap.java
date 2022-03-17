@@ -2,17 +2,18 @@ package interview;
 
 import java.util.*;
 
-public class LinkedLitOverlap {
-
+public class LinkedListOverlap {
+    Node head;
     class Node {
         private Node head;
-        private Node tail;
+        private Node next;
         private int value;
+
+        Node() {
+            
+        }
     }
     public static void main (String[] args) {
-        Node node = new Node();
-        node.value = 2;
-        node.left = new Node();
     }
 
     private void removeDuplicatesIterator() {

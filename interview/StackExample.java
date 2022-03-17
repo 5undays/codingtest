@@ -1,6 +1,8 @@
 package interview;
 
-public class Stack {
+import java.util.*;
+
+public class StackExample {
 
     public static void main(String[] args) {
 
@@ -10,7 +12,7 @@ public class Stack {
     private Stack<Integer> solution(Stack<Integer> stack) {
         Stack<Integer> result = new Stack<>();
         while (stack.isEmpty()) {
-            result.push(stack);
+            result.push(stack.pop());
         }
         return result;
     }

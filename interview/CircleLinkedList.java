@@ -3,7 +3,8 @@ package interview;
 import java.util.*;
 
 public class CircleLinkedList {
-    
+    private Node head;
+
     class Node {
         private Node head;
         private Node tail;
@@ -22,9 +23,9 @@ public class CircleLinkedList {
             if (nodeSet.contains(current.value)) {
                 return true;
             } else {
-                nodeSet.add(current.value);
+                nodeSet.add(current);
             }
-            current = current.next;
+            current = current.tail;
         }
         return false;
     }
@@ -35,16 +36,16 @@ public class CircleLinkedList {
         Node fast = new Node();
 
         while (fast != null) {
-           if (fast.next == null || fast.next.next == null) {
+           if (fast.tail == null || fast.tail.tail == null) {
                return false;
            }
 
-           fast = fast.next.next;
+           fast = fast.tail.tail;
            if (slow.value == fast.value) {
                return true;
            }
 
-           slow = fast.next;
+           slow = fast.tail;
         }
 
         return false;
