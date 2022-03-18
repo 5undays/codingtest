@@ -2,7 +2,7 @@ package interview;
 
 import java.util.*;
 
-public class LinkedListOverlap {
+public class LinkedListDuplicates {
     Node head;
     class Node {
         private Node head;
