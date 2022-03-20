@@ -4,20 +4,43 @@ import java.util.*;
 
 public class LinkedListDuplicates {
     Node head;
-    class Node {
-        private Node head;
+
+    static class Node {
         private Node next;
         private int value;
 
         Node() {
-            
+
         }
     }
-    public static void main (String[] args) {
+
+    public static void main(String[] args) {
+        Node node = new Node();
+        Node node1 = new Node();
+        Node node2 = new Node();
+        Node node3 = new Node();
+        node.value = 1;
+        node1.value = 2;
+        node2.value = 2;
+        node3.value = 4;
+        node.next = node1;
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = null;
+        test(node);
+        removeDuplicatesIterator(node);
     }
 
-    private void removeDuplicatesIterator() {
-        Node current = this.head;
+    private static void test(Node node) {
+        Node current = node;
+        while (current != null) {
+            System.out.println(current.value);
+            current = current.next;
+        }
+    }
+
+    private static void removeDuplicatesIterator(Node node) {
+        Node current = node;
         while (current != null) {
             Node temp = current;
             // 중복 제거
@@ -27,25 +50,26 @@ public class LinkedListDuplicates {
 
             // 다음 노트 설정
             current.next = temp;
+            System.out.println(current.value);
             current = current.next;
         }
     }
 
     private void removeDuplicatesIterator2() {
-      Node current = this.head;
-      Node prev = this.head;
+        Node current = this.head;
+        Node prev = this.head;
 
-      while (current != null) {
-          if (current.value != prev.value) {
-              prev.next = current;
-              prev = current;
-          }
-          current = current.next;
-      }
+        while (current != null) {
+            if (current.value != prev.value) {
+                prev.next = current;
+                prev = current;
+            }
+            current = current.next;
+        }
 
-      if (prev != current) {
-          prev.next = null;
-      }
+        if (prev != current) {
+            prev.next = null;
+        }
     }
 
     private Node removeDuplicatesRecursive(Node node) {
@@ -69,7 +93,7 @@ public class LinkedListDuplicates {
 
         Node current = this.head;
         Node prev = this.head;
-        
+
         while (current != null) {
             int currentNumber = current.value;
             if (numberSet.contains(currentNumber)) {

@@ -18,7 +18,7 @@ public class StackExample {
         System.out.println(s.toString());
     }
 
-    // 스택을 뒤집기
+    // 스택을 뒤집기 (반복)
     private Stack<Integer> solution(Stack<Integer> stack) {
         Stack<Integer> result = new Stack<>();
         while (!stack.isEmpty()) {
@@ -27,7 +27,7 @@ public class StackExample {
         return result;
     }
 
-    // 재귀
+    // 스택 뒤집기 (재귀)
     private void solutionRecursive(Stack<Integer> stack) {
         if (stack.isEmpty()) {
             return;
@@ -47,4 +47,20 @@ public class StackExample {
         stack.push(temp);
     }
 
+    private int[] currentOverNumber(int[] prices) {
+        int[] span = new int[prices.length];
+        Stack<Integer> stack = new Stack<>();
+        stack.push(0);
+        span[0] = 1;
+
+        for (int i = 1; i < prices.length; i++) {
+            while (!stack.isEmpty() && prices[stack.peek()] <= prices[i]) {
+                stack.pop();
+            }
+
+            span[i] = stack.isEmpty() ? i + 1 : i - stack.peek();
+            stack.push(i);
+        }
+        return span;
+    }
 }
