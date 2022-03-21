@@ -2,8 +2,9 @@ package interview;
 
 import java.util.*;
 
-public class LinkedListDuplicates {
+public class LinkedListExample {
     Node head;
+    Node tail;
 
     static class Node {
         private Node next;
@@ -88,6 +89,7 @@ public class LinkedListDuplicates {
         return node;
     }
 
+    // 중복 제거 (Map 사용)
     private void removeDuplicates() {
         Set<Integer> numberSet = new HashSet<>();
 
@@ -105,5 +107,22 @@ public class LinkedListDuplicates {
         }
 
         current = current.next;
+    }
+
+    // 리스트 뒤집기
+    private void reverse() {
+        Node current = this.head;
+        Node prev = null;
+        Node next = null;
+
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+
+        this.tail = this.head;
+        this.head = prev;
     }
 }
