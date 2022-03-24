@@ -1,10 +1,11 @@
 package interview;
 
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 
 public class LRUCacheExample {
 
-    private int chacheSize;
+    private int cacheSize;
 
     private HashMap<Integer, Node> map;
 
@@ -24,13 +25,32 @@ public class LRUCacheExample {
         } else {
             Node nodeToAdd = new Node();
             nodeToAdd.value = number;
-            if (map.size() == this.chacheSize) {
+            if (map.size() == this.cacheSize) {
                 map.remove(tail.value);
                 remove(tail);
             }
             addToHead(nodeToAdd);
             map.put(number, nodeToAdd);
         }
+    }
+
+    LinkedHashSet<Integer> cache = new LinkedHashSet<>();
+
+    private void query2(int number) {
+        if (!cache.contains(number)) {
+            if (cache.size() == cacheSize) {
+                int firstKey = cache.iterator().next();
+                cache.remove(firstKey);
+            }
+            cache.add(number);
+        }
+
+        cache.remove(number);
+        cache.add(number);
+    }
+
+    private void print2() {
+        System.out.println(cache);
     }
 
     private void addToHead(Node node) {
