@@ -47,6 +47,7 @@ public class StackExample {
         stack.push(temp);
     }
 
+    // 배열에서 인덱스의 값보다 큰 배열의 갯수을 반환
     private int[] currentOverNumber(int[] prices) {
         int[] span = new int[prices.length];
         Stack<Integer> stack = new Stack<>();
@@ -62,5 +63,30 @@ public class StackExample {
             stack.push(i);
         }
         return span;
+    }
+
+    // 괄호 짝 체크 문제
+    private boolean check(String mathExpression) {
+        Stack<Character> brackets = new Stack<>();
+        char[] chars = mathExpression.toCharArray();
+        List<Character> openingBrackets = Arrays.asList('(', '{', '[');
+        List<Character> closingBrackets = Arrays.asList(')', '}', ']');
+
+        for (char c : chars) {
+            if (openingBrackets.contains(c)) {
+                brackets.push(c);
+            } else if (closingBrackets.contains(c)) {
+                if (brackets.isEmpty()) {
+                    return false;
+                } else {
+                    Character openingBracket = brackets.pop();
+                    if (closingBrackets.indexOf(c) != openingBrackets.indexOf(openingBracket)) {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return brackets.isEmpty();
     }
 }

@@ -125,4 +125,34 @@ public class LinkedListExample {
         this.tail = this.head;
         this.head = prev;
     }
+
+    // POSTFIX 사칙 연산
+    private int evaluate(String s) {
+        LinkedList<Integer> numbers = new LinkedList<>();
+        char[] chars = s.trim().toCharArray();
+        for (char c : chars) {
+            if (Character.isDigit(c)) { // 숫자 이면
+
+            } else { // 숫자가 아닌 연산기호
+                int left = numbers.pop();
+                int right = numbers.pop();
+                switch (c) {
+                    case '+':
+                        numbers.push(left + right);
+                        break;
+                    case '-':
+                        numbers.push(left - right);
+                        break;
+                    case '/':
+                        numbers.push(left / right);
+                        break;
+                    case '*':
+                        numbers.push(left * right);
+                        break;
+                }
+
+            }
+        }
+        return numbers.pop();
+    }
 }
