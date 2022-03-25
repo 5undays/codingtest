@@ -1,5 +1,6 @@
 package interview;
 
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
@@ -33,5 +34,52 @@ public class QueueExample {
         return numbers;
     }
 
+    // 큐로 스택을 구현하기
+    public class queueForStack {
+
+        Queue<Integer> queue = new LinkedList<>();
+        Queue<Integer> queue2 = new LinkedList<>();
+
+        private void push(int number) {
+            queue2.offer(number);
+
+            while (!queue.isEmpty()) {
+                queue2.offer(number);
+            }
+
+            Queue<Integer> temp = queue;
+            queue = queue2;
+            queue2 = temp;
+        }
+
+        private Integer pop() {
+            if (queue.isEmpty()) {
+                return null;
+            }
+            return queue.poll();
+        }
+
+        private Integer pop2() {
+            if (queue.isEmpty()) {
+                return null;
+            }
+
+            while (queue.size() > 1) {
+                queue2.offer(queue.poll());
+            }
+
+            Integer value = queue.poll();
+
+            Queue<Integer> temp = queue;
+            queue = queue2;
+            queue2 = temp;
+
+            return value;
+        }
+
+        private void push2(int number) {
+            queue.offer(number);
+        }
+    }
 
 }
