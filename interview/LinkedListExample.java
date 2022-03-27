@@ -126,6 +126,24 @@ public class LinkedListExample {
         this.head = prev;
     }
 
+    // 리스트 뒤집기 (재귀)
+    private void reverse2() {
+        Node head = this.head;
+        this.head = reverRecursive(head);
+        this.tail = head;
+    }
+
+    private Node reverRecursive(Node node) {
+        if (node == null || node.next == null) {
+            return node;
+        }
+
+        Node reversedNode = reverRecursive(node.next);
+        node.next.next = node;
+        node.next = null;
+        return reversedNode;
+    }
+
     // POSTFIX 사칙 연산
     private int evaluate(String s) {
         LinkedList<Integer> numbers = new LinkedList<>();
