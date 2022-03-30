@@ -1,9 +1,9 @@
 package boj;
 
-import java.util.Arrays;
 import java.util.stream.IntStream;
 
 /**
+ * 예산
  * 해당 문제는 https://www.acmicpc.net/problem/2512 문제이지만
  * 프로그래머스 스터디 에서 실행된 코드이기 때문에 양식이 백준과는 다름
  */
@@ -52,11 +52,11 @@ public class BOJ_2512 {
     private int solution1(int[] budgets, int M) {
         int answer = 0;
         int min = 0;
-        //int max = 0;
+        // int max = 0;
         // for (int budget : budgets) {
-        //     if (budget > max) {
-        //         max = budget;
-        //     }
+        // if (budget > max) {
+        // max = budget;
+        // }
         // }
         int max = IntStream.of(budgets).max().orElse(0);
 
@@ -64,13 +64,13 @@ public class BOJ_2512 {
             final int mid = (min + max) / 2;
             // int sum = 0;
             // for (int budget : budgets) {
-            //     if (budget > max) {
-            //         sum += mid;
-            //     } else {
-            //         sum += budget;
-            //     }
+            // if (budget > max) {
+            // sum += mid;
+            // } else {
+            // sum += budget;
             // }
-            int sum = IntStream.of(budgets).map(b-> Math.min(b, mid)).sum();
+            // }
+            int sum = IntStream.of(budgets).map(b -> Math.min(b, mid)).sum();
 
             if (sum <= M) {
                 min = mid + 1;

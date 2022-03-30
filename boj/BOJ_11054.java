@@ -2,9 +2,12 @@ package boj;
 
 import java.util.Scanner;
 
+/**
+ * 가장 긴 바이토닉 부분 수열
+ * https://www.acmicpc.net/problem/11054
+ */
 public class BOJ_11054 {
 
-    // https://www.acmicpc.net/problem/11054
     public static void main(String args[]) {
         BOJ_11054 boj_11054 = new BOJ_11054();
         Scanner sc = new Scanner(System.in);

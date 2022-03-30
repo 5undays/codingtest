@@ -5,7 +5,10 @@ import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
 
-// https://www.acmicpc.net/problem/13913
+/**
+ * 숨바꼭질 4
+ * https://www.acmicpc.net/problem/13913
+ */
 public class BOJ_13913 {
 
     static final int MAX = 1000000;
