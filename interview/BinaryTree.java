@@ -7,17 +7,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
+import interview.entity.Graph;
+
 public class BinaryTree {
-
-    class Node {
-        private Node left;
-        private Node right;
-        private int value;
-
-        public Node(int value) {
-            this.value = value;
-        }
-    }
 
     int preIndex = 0;
 
@@ -32,12 +24,12 @@ public class BinaryTree {
      * @param endIdx   종료 인덱스
      * @return 이진 트리
      */
-    private Node buildRecurse(int[] inOrder, int[] preOrder, int startIdx, int endIdx) {
+    private Graph buildRecurse(int[] inOrder, int[] preOrder, int startIdx, int endIdx) {
         if (startIdx > endIdx) {
             return null;
         }
 
-        Node node = new Node(preOrder[preIndex++]);
+        Graph node = new Graph(preOrder[preIndex++]);
 
         if (startIdx == endIdx) {
             return node;
@@ -49,20 +41,24 @@ public class BinaryTree {
         return node;
     }
 
-    // 이진 트리의 계층 별 합 구하기
-    private int maxSum(Node root) {
+    /**
+     * 이진 트리의 계층 별 합 중 최대 값을 구하기
+     * @param root 최초 노드
+     * @return 계층 별 합 중 최대 값
+     */
+    private int maxSum(Graph root) {
         if (root == null)
             return 0;
         int result = root.value;
-        Queue<Node> queue = new LinkedList<>();
+        Queue<Graph> queue = new LinkedList<>();
         queue.add(root);
 
         while (!queue.isEmpty()) {
             int count = queue.size();
             int sum = 0;
-            while (count > 0) {
+            while (count-- > 0) {
                 count--;
-                Node node = queue.poll();
+                Graph node = queue.poll();
                 sum += node.value;
                 if (node.left != null) {
                     queue.add(node.left);
@@ -79,7 +75,7 @@ public class BinaryTree {
     private int count = 0;
 
     // POSTFIX 에서 N번째 index에 해당하는 값을 출력
-    private void print(Node root, int index) {
+    private void print(Graph root, int index) {
         if (root != null) {
             print(root.left, index);
             print(root.right, index);
@@ -98,9 +94,9 @@ public class BinaryTree {
      * @param n2   비교 노드 2
      * @return 가장 가까운 노드
      */
-    private Node solution(Node root, int n1, int n2) {
-        List<Node> n1Path = new ArrayList<>();
-        List<Node> n2Path = new ArrayList<>();
+    private Graph solution(Graph root, int n1, int n2) {
+        List<Graph> n1Path = new ArrayList<>();
+        List<Graph> n2Path = new ArrayList<>();
 
         if (!findPath(root, n1, n1Path) || !findPath(root, n2, n2Path)) {
             return null;
@@ -124,7 +120,7 @@ public class BinaryTree {
      * @param path 현재 노드에서 경로
      * @return 경로 존재 여부
      */
-    private boolean findPath(Node root, int n, List<Node> path) {
+    private boolean findPath(Graph root, int n, List<Graph> path) {
         if (root == null) {
             return false;
         }
@@ -148,14 +144,14 @@ public class BinaryTree {
     }
 
     // 가장 가까운 조상 찾기 (bindaryTree 의 경우)
-    private Node solution2(Node root, int n1, int n2) {
+    private Graph solution2(Graph root, int n1, int n2) {
         if (root == null)
             return null;
         if (root.value == n1 || root.value == n2)
             return root;
 
-        Node leftCLA = solution2(root.left, n1, n2);
-        Node rightCLA = solution2(root.right, n1, n2);
+        Graph leftCLA = solution2(root.left, n1, n2);
+        Graph rightCLA = solution2(root.right, n1, n2);
 
         if (leftCLA != null && rightCLA != null) {
             return root;
@@ -171,7 +167,7 @@ public class BinaryTree {
      * @param n2
      * @return
      */
-    private Node solution3(Node root, int n1, int n2) {
+    private Graph solution3(Graph root, int n1, int n2) {
         if (root == null)
             return null;
         int value = root.value;
@@ -190,7 +186,7 @@ public class BinaryTree {
      * @param node 노드
      * @return
      */
-    private boolean isBST(Node node) {
+    private boolean isBST(Graph node) {
         if (node == null) {
             return true;
         }
@@ -209,9 +205,9 @@ public class BinaryTree {
         return true;
     }
 
-    private Node prevNode;
+    private Graph prevNode;
 
-    private boolean isBST2(Node node) {
+    private boolean isBST2(Graph node) {
         if (node != null) {
             if (!isBST2(node.left)) {
                 return false;

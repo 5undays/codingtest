@@ -2,13 +2,10 @@ package interview;
 
 import java.util.*;
 
+import interview.entity.Node;
+
 public class CircleLinkedList {
     private Node head;
-
-    static class Node {
-        private Node tail;
-        private int value;
-    }
 
     public static void main(String[] args) {
         CircleLinkedList circleLinkedList = new CircleLinkedList();
@@ -21,16 +18,16 @@ public class CircleLinkedList {
         Node node2 = new Node();
         Node node3 = new Node();
         node.value = 1;
-        node.tail = node1;
+        node.next = node1;
         node1.value = 2;
-        node1.tail = node2;
+        node1.next = node2;
         node2.value = 3;
-        node2.tail = node3;
+        node2.next = node3;
         node3.value = 1;
-        node3.tail = node;
+        node3.next = node;
         this.head = node;
-        //boolean isCircle = hasCircle();
-        //System.out.println(isCircle);
+        // boolean isCircle = hasCircle();
+        // System.out.println(isCircle);
         Node startNode = startCircle();
         System.out.println(startNode.value);
     }
@@ -45,7 +42,7 @@ public class CircleLinkedList {
             } else {
                 nodeSet.add(current);
             }
-            current = current.tail;
+            current = current.next;
         }
         return false;
     }
@@ -56,16 +53,16 @@ public class CircleLinkedList {
         Node fast = new Node();
 
         while (fast != null) {
-            if (fast.tail == null || fast.tail.tail == null) {
+            if (fast.next == null || fast.next.next == null) {
                 return false;
             }
 
-            fast = fast.tail.tail;
+            fast = fast.next.next;
             if (slow.value == fast.value) {
                 return true;
             }
 
-            slow = fast.tail;
+            slow = fast.next;
         }
 
         return false;
@@ -81,7 +78,7 @@ public class CircleLinkedList {
             } else {
                 nodeSet.add(current);
             }
-            current = current.tail;
+            current = current.next;
         }
         return current;
     }

@@ -21,7 +21,7 @@ public class QueueExample {
         stack.push(2);
         stack.push(3);
         stack.push(4);
-        while(!stack.queue.isEmpty()) {
+        while (!stack.queue.isEmpty()) {
             System.out.println(stack.pop());
         }
     }
