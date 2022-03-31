@@ -7,7 +7,23 @@ import java.util.Stack;
 public class QueueExample {
 
     public static void main(String[] args) {
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(1);
+        queue.offer(2);
+        queue.offer(3);
+        queue.offer(4);
+        QueueExample example = new QueueExample();
+        queue = example.reverse(queue);
+        System.out.println(queue.toString());
 
+        QueueForStack stack = new QueueForStack();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        while(!stack.queue.isEmpty()) {
+            System.out.println(stack.pop());
+        }
     }
 
     // 큐 역방향
@@ -35,7 +51,7 @@ public class QueueExample {
     }
 
     // 큐로 스택을 구현하기
-    public class queueForStack {
+    public static class QueueForStack {
 
         Queue<Integer> queue = new LinkedList<>();
         Queue<Integer> queue2 = new LinkedList<>();
@@ -44,7 +60,7 @@ public class QueueExample {
             queue2.offer(number);
 
             while (!queue.isEmpty()) {
-                queue2.offer(number);
+                queue2.offer(queue.poll());
             }
 
             Queue<Integer> temp = queue;
