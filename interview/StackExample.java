@@ -15,7 +15,16 @@ public class StackExample {
         s.push(6);
         s.push(7);
         s = example.solution(s);
-        System.out.println(s.toString());
+        // System.out.println(s.toString());
+
+        StackForQueue stackForQueue = new StackForQueue();
+        stackForQueue.offer(1);
+        stackForQueue.offer(2);
+        stackForQueue.offer(3);
+        stackForQueue.offer(4);
+        while (!stackForQueue.stack2.isEmpty()) {
+            System.out.println(stackForQueue.poll());
+        }
     }
 
     // 스택을 뒤집기 (반복)
@@ -65,5 +74,27 @@ public class StackExample {
         return span;
     }
 
-    
+    // 스택으로 큐를 구현하기
+    public static class StackForQueue {
+
+        Stack<Integer> stack = new Stack<>(); // 역방향으로 옮겨질 것임
+        Stack<Integer> stack2 = new Stack<>(); // 정방향으로 넣어질 것임
+
+        private void offer(int number) {
+            stack.push(number);
+            Stack<Integer> stack3 = stack;
+            stack2.clear();
+            for (int i = stack3.size() - 1; i >= 0; i--) {
+                stack2.push(stack.get(i));
+            }
+        }
+
+        private Integer poll() {
+            if (stack2.isEmpty()) {
+                return null;
+            }
+            return stack2.pop();
+        }
+    }
+
 }
