@@ -37,7 +37,7 @@ public class LRUCacheExample {
     }
 
     /**
-     * LinkedHashSet 을 사용한 LRU
+     * LinkedHashSet (순서 보장) 을 사용한 LRU
      * 
      * @param number
      */

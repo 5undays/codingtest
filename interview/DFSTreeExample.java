@@ -2,46 +2,38 @@ package interview;
 
 import java.util.Stack;
 
+import interview.entity.Graph;
+
 public class DFSTreeExample {
 
-    static private class Node {
-        int value;
-        Node left;
-        Node right;
-
-        public Node(int value) {
-            this.value = value;
-        }
-    }
-
     public static void main(String[] args) {
-        Node root = new Node(1);
-        root.left = new Node(2);
-        root.right = new Node(3);
-        root.left.left = new Node(4);
-        root.left.right = new Node(5);
-        root.right.left = new Node(6);
-        root.right.right = new Node(7);
+        Graph root = new Graph(1);
+        root.left = new Graph(2);
+        root.right = new Graph(3);
+        root.left.left = new Graph(4);
+        root.left.right = new Graph(5);
+        root.right.left = new Graph(6);
+        root.right.right = new Graph(7);
 
         DFSTreeExample example = new DFSTreeExample();
         example.preOrder(root);
-        //example.inOrder(root);
-        //example.postOrder(root);
+        // example.inOrder(root);
+        // example.postOrder(root);
     }
 
     // preorder iterator
-    private void preOrder(Node root) {
+    private void preOrder(Graph root) {
         if (root == null) {
             return;
         }
-        
-        Stack<Node> stack = new Stack<>();
+
+        Stack<Graph> stack = new Stack<>();
         stack.push(root);
-        while(!stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             root = stack.pop();
             System.out.println(root.value);
             // right 항목은 left 보다 나중에 처리 되어야 함
-            if (root.right != null){
+            if (root.right != null) {
                 stack.push(root.right);
             }
             if (root.left != null) {
@@ -51,23 +43,23 @@ public class DFSTreeExample {
     }
 
     // inorder iteration
-    private void inOrder(Node root) {
+    private void inOrder(Graph root) {
         if (root == null) {
             return;
         }
-        
-        Stack<Node> stack = new Stack<>();
-        
-        while(true) {
+
+        Stack<Graph> stack = new Stack<>();
+
+        while (true) {
             while (root != null) {
                 stack.push(root);
                 root = root.left;
             }
-            
+
             if (stack.isEmpty()) {
                 break;
             }
-            
+
             root = stack.pop();
             System.out.println(root.value);
             root = root.right;
@@ -75,25 +67,25 @@ public class DFSTreeExample {
     }
 
     // post-Order iteration
-    private void postOrder(Node root) {
+    private void postOrder(Graph root) {
         if (root == null) {
             return;
         }
-        
+
         // 빈 스택을 생성한다
-        Stack<Node> stack = new Stack<>();
-        
-        while(true) {
+        Stack<Graph> stack = new Stack<>();
+
+        while (true) {
             while (root != null) {
                 stack.push(root);
                 stack.push(root);
                 root = root.left;
             }
-            
+
             if (stack.isEmpty()) {
                 break;
             }
-            
+
             root = stack.pop();
             // root를 두번 넣어 root.right 항목을 출력보다 먼저 처리 할수 있게 함
             if (!stack.isEmpty() && stack.peek() == root) {
@@ -104,10 +96,9 @@ public class DFSTreeExample {
             }
         }
     }
-    
 
     // pre-order Recursive
-    private void preOrder2(Node root) {
+    private void preOrder2(Graph root) {
         if (root != null) {
             preOrder2(root.left);
             preOrder2(root);
@@ -116,7 +107,7 @@ public class DFSTreeExample {
     }
 
     // inorder Recursive
-    private void inOrder2(Node root) {
+    private void inOrder2(Graph root) {
         if (root != null) {
             inOrder2(root.left);
             inOrder2(root);
@@ -125,7 +116,7 @@ public class DFSTreeExample {
     }
 
     // post-order Recursive
-    private void postOrder2(Node root) {
+    private void postOrder2(Graph root) {
         if (root != null) {
             postOrder2(root.left);
             postOrder2(root.right);

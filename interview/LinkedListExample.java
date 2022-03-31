@@ -2,18 +2,11 @@ package interview;
 
 import java.util.*;
 
+import interview.entity.Node;
+
 public class LinkedListExample {
     Node head;
     Node tail;
-
-    static class Node {
-        private Node next;
-        private int value;
-
-        Node() {
-
-        }
-    }
 
     public static void main(String[] args) {
         Node node = new Node();
