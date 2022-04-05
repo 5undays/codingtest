@@ -26,8 +26,8 @@ public class CircleLinkedList {
         node3.value = 1;
         node3.next = node;
         this.head = node;
-        // boolean isCircle = hasCircle();
-        // System.out.println(isCircle);
+        boolean isCircle = hasCircle();
+        System.out.println(isCircle);
         Node startNode = startCircle();
         System.out.println(startNode.value);
     }
