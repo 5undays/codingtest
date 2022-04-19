@@ -42,10 +42,10 @@ public class StreamExample {
         Stream<String> lineStream = Files.lines(Paths.get("file.txt"), Charset.forName("UTF-8"));
 
         Collection<String> productList;
-        Stream<Product> parallelStream2 = productList.parallelStream(); // 병렬 스트림 생성
+        //Stream<Product> parallelStream2 = productList.parallelStream(); // 병렬 스트림 생성
         boolean isParallel = parallelStream.isParallel(); // 병렬 여부 확인
 
-        boolean isMany = parallelStream.map(product -> product.getAmount() * 10).anyMatch();
+        //boolean isMany = parallelStream.map(product -> product.getAmount() * 10).anyMatch();
         Stream<String> stream1 = Stream.of("java", "Scala", "Groovy");
         Stream<String> stream2 = Stream.of("Python", "Go", "Swift");
         Stream<String> concat = Stream.concat(stream1, stream2);
