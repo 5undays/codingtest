@@ -1,8 +1,12 @@
 package example;
 
-import java.util.List;
-
 public class Product {
+
     int amount;
-    List productList;
+    String name;
+
+    public Product(int amount, String name) {
+        this.amount = amount;
+        this.name = name;
+    }
 }
