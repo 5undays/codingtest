@@ -6,10 +6,16 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.IntSummaryStatistics;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.Random;
+import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -108,8 +114,75 @@ public class StreamExample {
             return a + b;
         });
 
-        List<Product> productList = Arrays.asList(new Product(23, "potatoes"), new Product(14, "orange"), new Product(13, "lemon"));
+        List<Product> productList = Arrays.asList(new Product(23, "potatoes"), new Product(14, "orange"),
+                new Product(13, "lemon"), new Product(23, "bread"), new Product(13, "sugar"));
 
-        List<String> collectorCollection = productList.stream().map(Product::get)
+        List<String> collectorCollection = productList.stream().map(Product::getName).collect(Collectors.toList());
+        String listToString = productList.stream().map(Product::getName).collect(Collectors.joining());
+
+        String listTOString2 = productList.stream().map(Product::getName).collect(Collectors.joining(",", "<", ">"));
+
+        Double averageAmount = productList.stream().collect(Collectors.averagingInt(Product::getAmout)); // 17.2
+
+        Integer summingAmount = productList.stream().collect(Collectors.summingInt(Product::getAmout)); // 86
+
+        IntSummaryStatistics statistics = productList.stream().collect(Collectors.summarizingInt(Product::getAmout));
+        
+        Map<Integer, List<Product>> collectorMapLists = productList.stream().collect(Collectors.groupingBy(Product::getAmout));
+
+        //Collectors.partitioningBy()
+        Map<Boolean, List<Product>> mapPartitioned = productList.stream().collect(Collectors.partitioningBy(el -> el.getAmout() > 15));
+
+        Set<Product> unmodifiableSet = productList.stream().collect(Collectors.collectingAndThen(Collectors.toSet(), Collections::unmodifiableSet));
+
+        Collector<Product, ?, LinkedList<Product>> toLinkedList = Collector
+        .of(LinkedList::new, LinkedList::add, (first, second) -> {
+            first.addAll(second);
+            return first;
+        });
+        LinkedList<Product> linkedListPersons = productList.stream().collect(tol)
+    
+        List<String> names = Arrays.asList("Eric", "Elena", "Java");
+
+        // match
+        boolean anyMatch = names.stream().anyMatch(name -> name.contains("a")); // true
+        boolean allMatch = names.stream().allMatch(name -> name.length() > 3); // true
+        boolean noneMatch = names.stream().noneMatch(name -> name.endsWith("s")); // true
+
+        // Iterate
+        names.stream().forEach(System.out::println);
+
+        // findFirst
+        List<String> aa = names.stream().filter(al -> {
+            System.out.println("filter() was callled");
+            return al.contains("a");
+        })
+        .map(el -> {
+            System.out.println("map() was called");
+            return el.toUpperCase();
+        })
+        .findAny();
+
+        List<String> collect = names.stream().skip(2).map(el -> {
+            aa();
+            return el.substring(0,3);
+        })
+        .skip(2)
+        .collect(Collectors.toList());
+
+        System.out.println(collect);
+
+        Stream<String> stream5 = Stream.of("Eric", "Elena", "Java").filter(name -> name.contains("a"));
+
+        Optional<String> firstElement = stream.findFirst();
+        Optional<String> anyElement = stream.findAny();
+
+        List<String> nullList = null;
+
+        //nullList.stream().filter(str -> str.contains("a")).map(String::length).forEach(System.out::println); // NullPointException
+        Stream<Integer> intStream2 = collection
+
+
     }
+
 }
