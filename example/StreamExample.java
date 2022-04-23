@@ -180,7 +180,6 @@ public class StreamExample {
         List<String> nullList = null;
 
         //nullList.stream().filter(str -> str.contains("a")).map(String::length).forEach(System.out::println); // NullPointException
-        Stream<Integer> intStream2 = collection
 
 
     }
