@@ -25,6 +25,8 @@ import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 public class StreamExample {
+
+    
     public static void main(String[] args) throws IOException {
         // 배열 스트림
         String[] arr = new String[] { "a", "b", "c" };
