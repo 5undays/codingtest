@@ -3,9 +3,27 @@ package boj;
 import java.util.Scanner;
 import java.util.Stack;
 
-import javax.naming.spi.DirStateFactory.Result;
-
 public class BOJ_9012 {
+
+    public static boolean isValid(String s) {
+        int cnt = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                cnt++;
+            } else {
+                cnt--;
+            }
+            if (cnt < 0) {
+                return false;
+            }
+        }
+        if (cnt == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
