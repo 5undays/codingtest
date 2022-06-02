@@ -23,19 +23,19 @@ public class BOJ_1406 {
         while (m-- > 0) {
             String[] line = br.readLine().split(" ");
             char cmd = line[0].charAt(0);
-            if (cmd == 'L') {
+            if (cmd == 'L') { // 커서를 왼쪽으로 옮김   
                 if (!left.empty()) {
                     right.push(left.pop());
                 }
-            } else if (cmd == 'D') {
+            } else if (cmd == 'D') { // 커서를 오른쪽으로 옮김
                 if (!right.empty()) {
                     left.push(right.pop());
                 }
-            } else if (cmd == 'B') {
+            } else if (cmd == 'B') { // 커서에 왼쪽에 있는 문자를 삭제
                 if (!left.empty()) {
                     left.pop();
                 }
-            } else if (cmd == 'P') {
+            } else if (cmd == 'P') { // 문자를 추가함
                 char c = line[1].charAt(0);
                 left.push(c);
             }
