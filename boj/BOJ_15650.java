@@ -64,9 +64,9 @@ public class BOJ_15650 {
 
         if (index < n) {
             a[selected] = index;
-            go(index + 1, selected + 1, n, m);
+            go2(index + 1, selected + 1, n, m);
             a[selected] = 0;
-            go(index + 1, selected, n, m);
+            go2(index + 1, selected, n, m);
         }
     }
 }
