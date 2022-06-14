@@ -45,11 +45,12 @@ public class BOJ_15650 {
     }
 
     /**
-     *  1 부터 n 까지 중복 없는 오름차순 으로 뽑는다
-     * @param index 현재 인덱스
+     * 1 부터 n 까지 중복 없는 오름차순 으로 뽑는다
+     * 
+     * @param index    현재 인덱스
      * @param selected 지금까지 선택한 수의 갯수
-     * @param n 수의 범위
-     * @param m 수의 갯수
+     * @param n        수의 범위
+     * @param m        수의 갯수
      */
     public static void go2(int index, int selected, int n, int m) {
         if (selected == m) {

@@ -64,7 +64,7 @@ public class BOJ_15664 {
         Collections.sort(d);
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < d.size(); i++) {
-            if (i == 0 || !d.get(i).equals(d.get(i-1))) {
+            if (i == 0 || !d.get(i).equals(d.get(i - 1))) {
                 for (int j = 0; j < m; j++) {
                     sb.append(d.get(i).get(j));
                     if (i == m - 1) {

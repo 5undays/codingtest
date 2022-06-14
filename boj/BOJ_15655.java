@@ -18,7 +18,7 @@ public class BOJ_15655 {
         }
         // go(0, 0, n, m);
         Arrays.sort(data);
-        go2(0, 0, n, m);
+        //go2(0, 0, n, m);
         System.out.println(sb.toString());
     }
 
