@@ -3,8 +3,10 @@ package boj;
 import java.util.Scanner;
 
 // https://www.acmicpc.net/problem/1107
+// 리모컨
 public class BOJ_1107 {
-    static boolean[] broken = new boolean[10];
+
+    static boolean[] broken = new boolean[10]; // 고장난 번호 배열
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -38,6 +40,11 @@ public class BOJ_1107 {
 
     }
 
+    /**
+     * 
+     * @param current
+     * @return
+     */
     private static int possible(int current) {
         if (current == 0) {
             if (broken[0]) {

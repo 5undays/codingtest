@@ -2,7 +2,10 @@ package boj;
 
 import java.util.Scanner;
 
-// https://www.acmicpc.net/problem/3085
+/**
+ * https://www.acmicpc.net/problem/3085
+ * 사탕게임
+ */
 public class BOJ_3085 {
     public static void main(String[] args) {
         int answer = 0;
@@ -15,7 +18,8 @@ public class BOJ_3085 {
 
         for (int i = 0; i < board_size; i++) {
             for (int j = i; j < board_size; j++) {
-                if (i + 1 < board_size) { // 오른쪽
+                // 오른쪽
+                if (i + 1 < board_size) {
                     // 위치 변경
                     char temp = board[i][j];
                     board[i][j] = board[i + 1][j];
@@ -31,7 +35,8 @@ public class BOJ_3085 {
                     board[i + 1][j] = temp;
                 }
 
-                if (j + 1 < board_size) { // 아래
+                // 아래
+                if (j + 1 < board_size) {
                     // 위치 변경
                     char temp = board[i][j];
                     board[i][j] = board[i][j + 1];
@@ -50,6 +55,11 @@ public class BOJ_3085 {
         System.out.println(answer);
     }
 
+    /**
+     * 같은 색인지 확인
+     * @param board 보드
+     * @return
+     */
     public static int check(char[][] board) {
         int answer = 1;
         for (int i = 0; i < board.length; i++) {
