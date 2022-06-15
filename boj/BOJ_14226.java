@@ -15,12 +15,12 @@ public class BOJ_14226 {
 
         int[][] display = new int[n + 1][n + 1];
         for (int i = 0; i <= n; i++) {
-            Arrays.fill(display[i], -1);
+            Arrays.fill(display[i], -1); // 초기 배열 설정
         }
 
         Queue<Integer> q = new LinkedList<>();
         q.add(1); // 이모티콘 1개 입력
-        q.add(0);
+        q.add(0); // 클립보트 내용은 없음
 
         display[1][0] = 0;
         while (!q.isEmpty()) {
@@ -36,14 +36,14 @@ public class BOJ_14226 {
 
             // 클립보드에 있는 모든 이모티콘을 화면에 붙여넣기
             if (s + c <= n && display[s + c][c] == -1) {
-                display[s+c][c] = display[s][c] + 1;
-                q.add(s+c);
+                display[s + c][c] = display[s][c] + 1;
+                q.add(s + c);
                 q.add(c);
             }
 
             // 화면에 있는 이모티콘 중 하나를 삭제
             if (s - 1 >= 0 && display[s - 1][c] == -1) {
-                display[s-1][c] = display[s][c] + 1;
+                display[s - 1][c] = display[s][c] + 1;
                 q.add(s - 1);
                 q.add(c);
             }

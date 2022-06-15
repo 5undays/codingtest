@@ -3,8 +3,8 @@ package boj;
 import java.util.Scanner;
 
 /**
- * https://www.acmicpc.net/problem/3085
  * 사탕게임
+ * https://www.acmicpc.net/problem/3085
  */
 public class BOJ_3085 {
     public static void main(String[] args) {
