@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class BOJ1260 {
+public class BOJ_1260 {
     static ArrayList<Integer>[] data; // 정점
     static int n = 0;
     static boolean[] check;
