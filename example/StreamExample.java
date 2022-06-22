@@ -142,9 +142,9 @@ public class StreamExample {
             first.addAll(second);
             return first;
         });
-        LinkedList<Product> linkedListPersons = productList.stream().collect(tol)
+        //LinkedList<Product> linkedListPersons = productList.stream().collect(tol)
     
-        List<String> names = Arrays.asList("Eric", "Elena", "Java");
+        //List<String> names = Arrays.asList("Eric", "Elena", "Java");
 
         // match
         boolean anyMatch = names.stream().anyMatch(name -> name.contains("a")); // true
@@ -155,24 +155,24 @@ public class StreamExample {
         names.stream().forEach(System.out::println);
 
         // findFirst
-        List<String> aa = names.stream().filter(al -> {
-            System.out.println("filter() was callled");
-            return al.contains("a");
-        })
-        .map(el -> {
-            System.out.println("map() was called");
-            return el.toUpperCase();
-        })
-        .findAny();
+        // List<String> aa = names.stream().filter(al -> {
+        //     System.out.println("filter() was callled");
+        //     return al.contains("a");
+        // })
+        // .map(el -> {
+        //     System.out.println("map() was called");
+        //     return el.toUpperCase();
+        // })
+        // .findAny();
 
-        List<String> collect = names.stream().skip(2).map(el -> {
-            aa();
-            return el.substring(0,3);
-        })
-        .skip(2)
-        .collect(Collectors.toList());
+        // List<String> collect = names.stream().skip(2).map(el -> {
+        //     aa();
+        //     return el.substring(0,3);
+        // })
+        //.skip(2)
+        //.collect(Collectors.toList());
 
-        System.out.println(collect);
+        //System.out.println(collect);
 
         Stream<String> stream5 = Stream.of("Eric", "Elena", "Java").filter(name -> name.contains("a"));
 

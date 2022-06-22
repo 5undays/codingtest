@@ -27,7 +27,12 @@ public class StackExample {
         }
     }
 
-    // 스택을 뒤집기 (반복)
+    /**
+     * 반복을 활용한 스택 뒤집기
+     * 
+     * @param stack
+     * @return
+     */
     private Stack<Integer> solution(Stack<Integer> stack) {
         Stack<Integer> result = new Stack<>();
         while (!stack.isEmpty()) {
@@ -36,7 +41,11 @@ public class StackExample {
         return result;
     }
 
-    // 스택 뒤집기 (재귀)
+    /**
+     * 재귀를 활용한 스택 뒤집기
+     * 
+     * @param stack
+     */
     private void solutionRecursive(Stack<Integer> stack) {
         if (stack.isEmpty()) {
             return;
@@ -56,45 +65,50 @@ public class StackExample {
         stack.push(temp);
     }
 
-    // 배열에서 인덱스의 값보다 큰 배열의 갯수을 반환
+    /**
+     * 배열에서 인덱스의 값보다 낮거나 같았떤 연속적인 일 수 배열
+     * 
+     * @param prices 배열
+     * @return 인덱스의 값보다 큰 수 배열
+     */
     private int[] currentOverNumber(int[] prices) {
-        int[] span = new int[prices.length];
+        int[] result = new int[prices.length];
         Stack<Integer> stack = new Stack<>();
         stack.push(0);
-        span[0] = 1;
+        result[0] = 1;
 
         for (int i = 1; i < prices.length; i++) {
             while (!stack.isEmpty() && prices[stack.peek()] <= prices[i]) {
                 stack.pop();
             }
 
-            span[i] = stack.isEmpty() ? i + 1 : i - stack.peek();
+            result[i] = stack.isEmpty() ? i + 1 : i - stack.peek();
             stack.push(i);
         }
-        return span;
+        return result;
     }
 
-    // 스택으로 큐를 구현하기
-    public static class StackForQueue {
+}
 
-        Stack<Integer> stack = new Stack<>(); // 역방향으로 옮겨질 것임
-        Stack<Integer> stack2 = new Stack<>(); // 정방향으로 넣어질 것임
+// 스택으로 큐를 구현하기
+class StackForQueue {
 
-        private void offer(int number) {
-            stack.push(number);
-            Stack<Integer> stack3 = stack;
-            stack2.clear();
-            for (int i = stack3.size() - 1; i >= 0; i--) {
-                stack2.push(stack.get(i));
-            }
-        }
+    Stack<Integer> stack = new Stack<>(); // 역방향 스택
+    Stack<Integer> stack2 = new Stack<>(); // 정방향 스택
 
-        private Integer poll() {
-            if (stack2.isEmpty()) {
-                return null;
-            }
-            return stack2.pop();
+    void offer(int number) {
+        stack.push(number);
+        Stack<Integer> stack3 = stack;
+        stack2.clear();
+        for (int i = stack3.size() - 1; i >= 0; i--) {
+            stack2.push(stack.get(i));
         }
     }
 
+    Integer poll() {
+        if (stack2.isEmpty()) {
+            return null;
+        }
+        return stack2.pop();
+    }
 }

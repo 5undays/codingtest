@@ -36,13 +36,13 @@ public class LRUCacheExample {
         }
     }
 
+    LinkedHashSet<Integer> cache = new LinkedHashSet<>();
+
     /**
      * LinkedHashSet (순서 보장) 을 사용한 LRU
      * 
      * @param number
      */
-    LinkedHashSet<Integer> cache = new LinkedHashSet<>();
-
     private void query2(int number) {
         if (!cache.contains(number)) {
             if (cache.size() == cacheSize) {
