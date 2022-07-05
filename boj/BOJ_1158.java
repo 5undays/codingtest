@@ -4,6 +4,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
+/**
+ * 요세푸스 문제
+ * https://www.acmicpc.net/problem/1158
+ */
 public class BOJ_1158 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
