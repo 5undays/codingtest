@@ -3,6 +3,10 @@ package boj;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * N과 M (6)
+ * https://www.acmicpc.net/problem/15655
+ */
 public class BOJ_15655 {
     static StringBuffer sb = new StringBuffer();
     static int[] a = new int[10];
@@ -18,7 +22,7 @@ public class BOJ_15655 {
         }
         // go(0, 0, n, m);
         Arrays.sort(data);
-        //go2(0, 0, n, m);
+        // go2(0, 0, n, m);
         System.out.println(sb.toString());
     }
 

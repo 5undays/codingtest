@@ -2,6 +2,10 @@ package boj;
 
 import java.util.Scanner;
 
+/**
+ * N과 M (1)
+ * https://www.acmicpc.net/problem/15649
+ */
 public class BOJ_15649 {
     public static boolean[] c = new boolean[10];
     public static StringBuffer sb = new StringBuffer();
