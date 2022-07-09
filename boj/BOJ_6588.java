@@ -3,7 +3,10 @@ package boj;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// https://www.acmicpc.net/problem/6588
+/**
+ * 골드바흐의 추측
+ * https://www.acmicpc.net/problem/6588
+ */
 public class BOJ_6588 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -26,7 +29,7 @@ public class BOJ_6588 {
             for (int i = 1; i < arr.size(); i++) {
                 int p = arr.get(i);
                 if (check[n - p] == false) {
-                    System.out.println(n + " = " + p + "+" + (n - p));
+                    System.out.println(n + " = " + p + " + " + (n - p));
                     break;
                 }
             }

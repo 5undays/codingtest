@@ -5,48 +5,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
-class Result implements Comparable<Result> {
-    Integer[] a;
-
-    Result(ArrayList<Integer> a) {
-        this.a = a.toArray(new Integer[a.size()]);
-    }
-
-    int get(int index) {
-        return (int) this.a[index];
-    }
-
-    public boolean equals(Object obj) {
-        if (obj instanceof Result) {
-            Result that = (Result) obj;
-            int n = this.a.length;
-            for (int i = 0; i < n; i++) {
-                if (this.a[i] != that.a[i]) {
-                    return false;
-                }
-            }
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public int compareTo(Result that) {
-        int n = this.a.length;
-        for (int i = 0; i < n; i++) {
-            if (this.a[i] == that.a[i])
-                continue;
-            if (this.a[i] < that.a[i])
-                return -1;
-            if (this.a[i] > that.a[i])
-                return 1;
-        }
-        return 0;
-    }
-
-}
-
+/**
+ * N과 M (9)
+ * https://www.acmicpc.net/problem/15663
+ */
 public class BOJ_15663 {
     static int[] data = new int[10];
     static int[] a = new int[10];
@@ -94,4 +56,46 @@ public class BOJ_15663 {
             }
         }
     }
+}
+
+class Result implements Comparable<Result> {
+    Integer[] a;
+
+    Result(ArrayList<Integer> a) {
+        this.a = a.toArray(new Integer[a.size()]);
+    }
+
+    int get(int index) {
+        return (int) this.a[index];
+    }
+
+    public boolean equals(Object obj) {
+        if (obj instanceof Result) {
+            Result that = (Result) obj;
+            int n = this.a.length;
+            for (int i = 0; i < n; i++) {
+                if (this.a[i] != that.a[i]) {
+                    return false;
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int compareTo(Result that) {
+        int n = this.a.length;
+        for (int i = 0; i < n; i++) {
+            if (this.a[i] == that.a[i])
+                continue;
+            if (this.a[i] < that.a[i])
+                return -1;
+            if (this.a[i] > that.a[i])
+                return 1;
+        }
+        return 0;
+    }
+
 }

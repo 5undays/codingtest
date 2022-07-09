@@ -3,6 +3,10 @@ package boj;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * N과 M(8)
+ * https://www.acmicpc.net/problem/15657
+ */
 public class BOJ_15657 {
     static boolean[] c = new boolean[10];
     static int[] data = new int[10];

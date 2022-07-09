@@ -3,11 +3,15 @@ package boj;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * N과 M (12)
+ * https://www.acmicpc.net/problem/15666
+ */
 public class BOJ_15666 {
     static int[] data = new int[10];
     static int[] temp = new int[10];
     static int[] a = new int[10];
-    
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();

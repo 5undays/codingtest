@@ -3,6 +3,10 @@ package boj;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * N과 M (11)
+ * https://www.acmicpc.net/problem/15665
+ */
 public class BOJ_15665 {
     static int[] num = new int[10];
     

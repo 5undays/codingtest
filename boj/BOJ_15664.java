@@ -5,50 +5,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
-class Result implements Comparable<Result> {
-    Integer[] a;
-
-    Result(ArrayList<Integer> a) {
-        this.a = a.toArray(new Integer[a.size()]);
-    }
-
-    int get(int index) {
-        return (int) this.a[index];
-    }
-
-    public boolean equals(Object obj) {
-        if (obj instanceof Result) {
-            Result that = (Result) obj;
-            int n = this.a.length;
-            for (int i = 0; i < n; i++) {
-                if (this.a[i] != that.a[i]) {
-                    return false;
-                }
-            }
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public int compareTo(Result result) {
-        int n = this.a.length;
-        for (int i = 0; i < n; i++) {
-            if (this.a[i] == result.a[i]) {
-                continue;
-            }
-            if (this.a[i] < result.a[i]) {
-                return -1;
-            }
-            if (this.a[i] > result.a[i]) {
-                return 1;
-            }
-        }
-        return 0;
-    }
-
-}
-
+/**
+ * N과 M (10)
+ * https://www.acmicpc.net/problem/15664
+ */
 public class BOJ_15664 {
     static int[] data = new int[10];
 
@@ -97,4 +57,48 @@ public class BOJ_15664 {
             }
         }
     }
+}
+
+class Result implements Comparable<Result> {
+    Integer[] a;
+
+    Result(ArrayList<Integer> a) {
+        this.a = a.toArray(new Integer[a.size()]);
+    }
+
+    int get(int index) {
+        return (int) this.a[index];
+    }
+
+    public boolean equals(Object obj) {
+        if (obj instanceof Result) {
+            Result that = (Result) obj;
+            int n = this.a.length;
+            for (int i = 0; i < n; i++) {
+                if (this.a[i] != that.a[i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public int compareTo(Result result) {
+        int n = this.a.length;
+        for (int i = 0; i < n; i++) {
+            if (this.a[i] == result.a[i]) {
+                continue;
+            }
+            if (this.a[i] < result.a[i]) {
+                return -1;
+            }
+            if (this.a[i] > result.a[i]) {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
 }

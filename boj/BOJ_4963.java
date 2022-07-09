@@ -4,9 +4,13 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
+/**
+ * 섬의 개수
+ * https://www.acmicpc.net/problem/4963
+ */
 public class BOJ_4963 {
     static int[] dx = { 1, -1, 0, 0, -1, -1, 1, 1 };
-    static int[] dy = {1, -1, 0, 0, 1, -1, 1, -1};
+    static int[] dy = { 1, -1, 0, 0, 1, -1, 1, -1 };
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -37,6 +41,16 @@ public class BOJ_4963 {
         }
     }
 
+    /**
+     * 
+     * @param map 섬의 맵
+     * @param x 현재 x축 위치
+     * @param y 현재 y축 위치
+     * @param a 현재 그룹 번호
+     * @param group 
+     * @param u x축 범위
+     * @param w 축 범위
+     */
     public static void dfs(int[][] map, int x, int y, int a, int[][] group, int u, int w) {
         Queue<Pair> q = new LinkedList<Pair>();
         q.add(new Pair(x, y));

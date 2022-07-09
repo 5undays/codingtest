@@ -1,8 +1,6 @@
 package boj;
 
-import java.security.cert.X509CRL;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
