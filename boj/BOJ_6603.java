@@ -25,11 +25,11 @@ public class BOJ_6603 {
     }
 
     /**
-     * 
-     * @param idx
-     * @param depth
-     * @param s
-     * @param c
+     * idx 부터 중복 없는 오름차순으로 뽑는다
+     * @param idx 현재 인덱스
+     * @param depth 중복 없이 뽑는 갯수
+     * @param s 전체 배열
+     * @param c 중복 없는 배열 방문 여부
      */
     private static void backtracking(int idx, int depth, int[] s, boolean[] c) {
         if (depth == 6) {
@@ -43,7 +43,6 @@ public class BOJ_6603 {
 
         for (int i = idx; i < s.length; i++) {
             c[i] = true;
-            System.out.println(i + ", "+ depth);
             backtracking(i + 1, depth + 1, s, c);
             c[i] = false;
         }
