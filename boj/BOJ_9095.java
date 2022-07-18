@@ -2,7 +2,10 @@ package boj;
 
 import java.util.Scanner;
 
-// https://www.acmicpc.net/problem/9095
+/**
+ * 1,2,3 더하기
+ * https://www.acmicpc.net/problem/9095
+ */
 public class BOJ_9095 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -17,6 +20,12 @@ public class BOJ_9095 {
         }
     }
 
+    /**
+     * 
+     * @param sum 합계
+     * @param goal 목표값
+     * @return
+     */
     public static int go(int sum, int goal) {
         if (sum > goal)
             return 0;
