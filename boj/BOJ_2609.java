@@ -2,6 +2,10 @@ package boj;
 
 import java.util.Scanner;
 
+/**
+ * 최대공약수와 최대공배수
+ * https://www.acmicpc.net/problem/2609
+ */
 public class BOJ_2609 {
 
     public static void main(String[] args) {
@@ -18,7 +22,7 @@ public class BOJ_2609 {
         return a * b / gcd(a, b);
     }
 
-    // 최대 공약수  
+    // 최대 공약수
     private static int gcd(int a, int b) {
         if (b == 0) {
             return a;
