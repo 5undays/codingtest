@@ -2,8 +2,10 @@ package boj;
 
 import java.util.Scanner;
 
-// https://www.acmicpc.net/problem/1107
-// 리모컨
+/**
+ * 리모컨
+ * https://www.acmicpc.net/problem/1107
+ */
 public class BOJ_1107 {
 
     static boolean[] broken = new boolean[10]; // 고장난 번호 배열
@@ -13,24 +15,23 @@ public class BOJ_1107 {
         int N = sc.nextInt(); // 이동하고자 하는 번호
         int M = sc.nextInt(); // 고장난 번호의 개수
         for (int i = 0; i < M; i++) {
-            int number = sc.nextInt(); // 고장난 번호
-            broken[number] = true;
+            broken[sc.nextInt()] = true;
         }
-        int answer = N - 100;
-        if (answer < 0)
-            answer = -answer;
+        // 이동하고자 하는 번호로 가기위해 버튼을 눌러야 하는 횟수
+        int answer = Math.abs(N - 100);
 
         for (int i = 0; i < 1000000; i++) {
             int current = i;
-            int length = possible(current);
-            // 고장난 버튼이 없는 경우 +- 를 몇번 눌러야 하는지 
-            if (length > 0) {
+            int count = possible(current);
+            // 고장난 버튼이 없는 경우 +- 를 몇번 눌러야 하는지
+            if (count > 0) {
                 int press = current - N;
                 if (press < 0) {
                     press = -press;
                 }
-                if (answer > length + press) {
-                    answer = length + press;
+                // 가장 작은 횟수로 작동할 수 있는 경우를 업데이트 해줌
+                if (answer > count + press) {
+                    answer = count + press;
                     System.out.println(answer);
                 }
             }
@@ -41,9 +42,10 @@ public class BOJ_1107 {
     }
 
     /**
+     * 고장난 버튼이 있는지 확인
      * 
-     * @param current
-     * @return
+     * @param current 현재 번호
+     * @return 버튼 눌러야 하는 횟수
      */
     private static int possible(int current) {
         if (current == 0) {
@@ -54,13 +56,13 @@ public class BOJ_1107 {
             }
         }
 
-        int length = 0;
+        int cnt = 0;
         while (current > 0) {
             if (broken[current % 10])
                 return 0;
-            length++;
+            cnt++;
             current /= 10;
         }
-        return length;
+        return cnt;
     }
 }
