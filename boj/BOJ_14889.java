@@ -13,7 +13,7 @@ public class BOJ_14889 {
     static int[][] map;
     static boolean[] visited;
     static int n;
-    static int answer;
+    static int answer = Integer.MAX_VALUE;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -25,19 +25,20 @@ public class BOJ_14889 {
                 map[i][j] = Integer.parseInt(st.nextToken());
             }
         }
+        visited = new boolean[n];
         backtracking(0, 0);
         System.out.println(answer);
     }
 
-    private static void backtracking(int n, int depth) {
-        if (depth == n / 2) {
+    private static void backtracking(int idx, int depth) {
+        if (depth == n / 2) { // 팀 조합 완성
             diff();
             return;
         }
 
-        for (int i = n; i < n; i++) {
+        for (int i = idx; i < n; i++) {
             visited[i] = true;
-            backtracking(n + 1, depth + 1);
+            backtracking(i + 1, depth + 1);
             visited[i] = false;
         }
     }
@@ -49,11 +50,9 @@ public class BOJ_14889 {
         for (int i = 0; i < n - 1; i++) {
             for (int j = i + 1; j < n; j++) {
                 if (visited[i] && visited[j]) {
-                    startTeam += map[i][j];
-                    startTeam += map[j][i];
+                    startTeam += map[i][j] + map[j][i];
                 } else if (!visited[i] && !visited[j]) {
-                    linkTeam += map[j][i];
-                    linkTeam += map[i][j];
+                    linkTeam += map[j][i] + map[i][j];
                 }
             }
         }
