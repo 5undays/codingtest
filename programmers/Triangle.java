@@ -1,7 +1,9 @@
 package programmers;
 
-// 정수 삼각형
-// https://programmers.co.kr/learn/courses/30/lessons/43105
+/**
+ * 정수 삼각형
+ * https://programmers.co.kr/learn/courses/30/lessons/43105
+ */
 public class Triangle {
 
     public static void main(String args[]) {
@@ -10,6 +12,11 @@ public class Triangle {
         System.out.println(answer);
     }
 
+    /**
+     * 
+     * @param triangle
+     * @return
+     */
     public int solution(int[][] triangle) {
         int answer = 0;
         for (int i = 1; i < triangle.length; i++) {
@@ -29,6 +36,11 @@ public class Triangle {
         return answer;
     }
 
+    /**
+     * 
+     * @param triangle
+     * @return
+     */
     public int solution1(int[][] triangle) {
         for (int i = triangle.length - 2; i >= 0; i--) {
             for (int j = 0; j < triangle[i].length; j++) {

@@ -33,7 +33,6 @@ public class BOJ_1026 {
         int answer = 0;
 
         for (int i = 0; i < n; i++) {
-            //System.out.println(a.get(i) + ", " + b.get(i));
             int t = (int) a.get(i) * (int) b.get(i);
             answer += t;
         }

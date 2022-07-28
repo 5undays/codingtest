@@ -23,15 +23,19 @@ public class BOJ_1182 {
         System.out.println(answer);
     }
 
+    /**
+     * 부분 수열의 합을 dfs로 구현
+     * @param i 배열의 인덱스
+     * @param sum 합계
+     */
     private static void dfs(int i, int sum) {
         if (i == n)
             return;
         if (s == arr[i] + sum) {
-            answer++;
+            answer++;   
         }
    
         dfs(i + 1, sum);
         dfs(i + 1, sum + arr[i]);
-
     }
 }
