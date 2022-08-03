@@ -20,6 +20,11 @@ public class BOJ_1978 {
         System.out.println(answer);
     }
 
+    /**
+     * 소수 검증
+     * @param number 숫자
+     * @return 소수 여부
+     */
     public static boolean isPrime(int number) {
         if (number < 2)
             return false;
