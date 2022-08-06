@@ -2,7 +2,10 @@ package boj;
 
 import java.util.Scanner;
 
-// https://www.acmicpc.net/problem/10872
+/**
+ * 팩토리얼
+ * https://www.acmicpc.net/problem/10872
+ */
 public class BOJ_10872 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

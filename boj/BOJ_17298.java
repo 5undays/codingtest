@@ -3,6 +3,10 @@ package boj;
 import java.util.Scanner;
 import java.util.Stack;
 
+/**
+ * 오큰수
+ * https://www.acmicpc.net/problem/17298
+ */
 public class BOJ_17298 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

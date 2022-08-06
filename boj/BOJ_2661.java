@@ -8,7 +8,7 @@ import java.util.Scanner;
  */
 public class BOJ_2661 {
     static int n;
-    static int answer = Integer.MAX_VALUE;
+    //static int answer = Integer.MAX_VALUE;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

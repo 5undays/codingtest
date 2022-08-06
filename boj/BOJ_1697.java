@@ -11,19 +11,19 @@ import java.util.Scanner;
 public class BOJ_1697 {
 
     static final int MAX = 1000000;
-    static final boolean[] check = new boolean[MAX];
-    static final int[] dist = new int[MAX];
-    static final Queue<Integer> queue = new LinkedList<>();
+    static final boolean[] check = new boolean[MAX]; // 방문 여부
+    static final int[] dist = new int[MAX]; // 인덱스당 접근 시간
+    static final Queue<Integer> queue = new LinkedList<>(); // 현재 위치
 
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
-        // int n = sc.nextInt(); // 형이 있는 위치
-        // int k = sc.nextInt(); // 동생이 있는 위치
-        int n = 5;
-        int k = 17;
+        int n = sc.nextInt(); // 형이 있는 위치
+        int k = sc.nextInt(); // 동생이 있는 위치
+
         // 시작점을 수동으로 넣어준다
-        check[n] = true;
         queue.add(n);
+        check[n] = true;
+
         while (!queue.isEmpty()) {
             int now = queue.remove();
             // 접근 할 수 있는 모든 경우의 수에 해당하는 곳에 접근한다
