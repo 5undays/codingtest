@@ -17,22 +17,18 @@ public class BOJ_1107 {
         for (int i = 0; i < M; i++) {
             broken[sc.nextInt()] = true;
         }
-        // 이동하고자 하는 번호로 가기위해 버튼을 눌러야 하는 횟수
+        // 이동하고자 하는 번호로 가기위해 버튼을 눌러야 하는 횟수 ( 기본 100 번 채널 부터 시작 )
         int answer = Math.abs(N - 100);
 
         for (int i = 0; i < 1000000; i++) {
-            int current = i;
-            int count = possible(current);
+            int count = possible(i);
             // 고장난 버튼이 없는 경우 +- 를 몇번 눌러야 하는지
             if (count > 0) {
-                int press = current - N;
-                if (press < 0) {
-                    press = -press;
-                }
+                int press = Math.abs(i - N);
+
                 // 가장 작은 횟수로 작동할 수 있는 경우를 업데이트 해줌
                 if (answer > count + press) {
                     answer = count + press;
-                    System.out.println(answer);
                 }
             }
         }
