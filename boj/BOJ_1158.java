@@ -22,11 +22,11 @@ public class BOJ_1158 {
         sb.append("<");
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < per - 1; j++) {
-                q.offer(q.poll());
+                q.offer(q.poll()); // per 이전 값들은 다시 큐에 넣어줌
             }
-            sb.append(q.poll() + ", ");
+            sb.append(q.poll() + ", "); // per 에 해당하는 데이터 제거
         }
-        sb.append(q.poll() + ">");
+        sb.append(q.poll() + ">"); // 마지막 하나
         System.out.println(sb);
     }
 }
