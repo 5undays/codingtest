@@ -3,7 +3,6 @@ package boj;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
-import java.util.Stack;
 
 /**
  * 숨바꼭질 4
@@ -23,6 +22,9 @@ public class BOJ_13913 {
         int k = sc.nextInt(); // 동생이 있는 위치
 
         queue.add(n);
+        check[n] = true;
+        dist[n] = 0;
+
         while (!queue.isEmpty()) {
             int now = queue.remove();
             condition(now - 1, now); // 걷기 (1초)
@@ -31,21 +33,26 @@ public class BOJ_13913 {
         }
 
         System.out.println(dist[k]); // 동생을 찾는 가장 빠른 시간
-        Stack<Integer> result = new Stack<>();
-        result.push(k);
-        int idx = k;
-        while (idx != n) {
-            result.push(prevDist[idx]);
-            idx = prevDist[idx];
-        }
 
-        while (!result.isEmpty()) {
-            System.out.print(result.pop() + " "); // 가장 빨리 찾는 이동 방법
+        print(n, k);
+    }
+
+    /**
+     * 결과 출력
+     * 
+     * @param n 형 위치
+     * @param k 동생 위치
+     */
+    private static void print(int n, int k) {
+        if (n != k) {
+            print(n, prevDist[k]);
         }
+        System.out.print(k + " ");
     }
 
     /**
      * 조건
+     * 
      * @param num 다음 위치
      * @param now 지금 위치
      * @return
