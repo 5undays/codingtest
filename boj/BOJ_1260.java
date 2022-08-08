@@ -6,6 +6,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
+/**
+ * DFS와 BFS
+ * https://www.acmicpc.net/problem/1260
+ */
 public class BOJ_1260 {
     static ArrayList<Integer>[] data; // 정점
     static int n = 0;
@@ -26,20 +30,21 @@ public class BOJ_1260 {
             data[u].add(w);
             data[w].add(u);
         }
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i <= n; i++) {
             Collections.sort(data[i]);
         }
 
         check = new boolean[n + 1];
-        System.out.print("dfs : ");
         dfs(v);
         System.out.println();
         check = new boolean[n + 1];
-        System.out.print("bfs : ");
         bfs(v);
     }
 
-    // depth find Search
+    /**
+     * depth find Search
+     * @param start 시작
+     */
     private static void dfs(int start) {
         if (check[start])
             return;
@@ -52,7 +57,10 @@ public class BOJ_1260 {
         }
     }
 
-    // breadth find search
+    /**
+     * breadth find search
+     * @param start 시작
+     */
     private static void bfs(int start) {
         Queue<Integer> queue = new LinkedList<>();
         queue.add(start);
