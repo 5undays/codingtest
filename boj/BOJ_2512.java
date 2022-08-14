@@ -1,75 +1,40 @@
 package boj;
 
+import java.util.Scanner;
 import java.util.stream.IntStream;
 
 /**
  * 예산
- * 해당 문제는 https://www.acmicpc.net/problem/2512 문제이지만
- * 프로그래머스 스터디 에서 실행된 코드이기 때문에 양식이 백준과는 다름
+ * https://www.acmicpc.net/problem/2512
  */
 public class BOJ_2512 {
 
     public static void main(String args[]) {
-        BOJ_2512 answer = new BOJ_2512();
-        System.out.println(answer.solution(new int[] { 120, 110, 140, 150 }, 485));
-        System.out.println(answer.solution(new int[] { 70, 80, 30, 40, 100 }, 450));
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); // 예산 요청 지방 개수
+        int[] budgets = new int[n];
+        for (int i = 0; i < n; i++) {
+            budgets[i] = sc.nextInt();
+        }
+        int m = sc.nextInt(); // 총 예산
+        int answer = solution1(budgets, m);
+        System.out.println(answer);
     }
 
-    public int solution(int[] budgets, int M) {
+    /**
+     * 예산 
+     * @param budgets 예산
+     * @param M 총 예산
+     * @return
+     */
+    private static int solution1(int[] budgets, int M) {
         int answer = 0;
-        int left = 0;
-        int right = budgets[budgets.length - 1];
-
-        while (left <= right) {
-            answer = (left + right) / 2;
-            if (condition(budgets, answer, M)) {
-                left = answer + 1;
-            } else {
-                right = answer - 1;
-            }
-        }
-        return answer;
-    }
-
-    // 정해진 예산에 맞는지 확인
-    private boolean condition(int[] budgets, int answer, int M) {
-        int totalBudget = 0;
-        for (int i = 0; i < budgets.length; i++) {
-            if (budgets[i] >= answer) {
-                totalBudget += answer;
-            } else {
-                totalBudget += budgets[i];
-            }
-        }
-
-        if (totalBudget > M) {
-            return false;
-        }
-        return true;
-    }
-
-    // 다른 풀이
-    private int solution1(int[] budgets, int M) {
-        int answer = 0;
-        int min = 0;
-        // int max = 0;
-        // for (int budget : budgets) {
-        // if (budget > max) {
-        // max = budget;
-        // }
-        // }
-        int max = IntStream.of(budgets).max().orElse(0);
+        int min = 0; // 가장 적은 예산
+        int max = IntStream.of(budgets).max().orElse(0); // 가장 큰 예산
 
         while (min <= max) {
-            final int mid = (min + max) / 2;
-            // int sum = 0;
-            // for (int budget : budgets) {
-            // if (budget > max) {
-            // sum += mid;
-            // } else {
-            // sum += budget;
-            // }
-            // }
+            int mid = (min + max) / 2;
+            // 총 예산 중 중간 값과 비교하여 작은 값 들을 저장
             int sum = IntStream.of(budgets).map(b -> Math.min(b, mid)).sum();
 
             if (sum <= M) {
