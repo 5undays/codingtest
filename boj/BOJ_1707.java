@@ -1,6 +1,8 @@
 package boj;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 /**
@@ -31,7 +33,10 @@ public class BOJ_1707 {
             boolean answer = true;
 
             for (int i = 1; i <= v; i++) {
-                dfs(i, 1);
+                if (color[i] == 0) {
+                    //dfs(i, 1);
+                    bfs(i, 1);
+                }
             }
 
             for (int i = 1; i <= v; i++) {
@@ -53,6 +58,21 @@ public class BOJ_1707 {
         color[index] = c;
         for (int x : list[index]) {
             dfs(x, 3 - c);
+        }
+    }
+
+    private static void bfs(int index, int c) {
+        Queue<Integer> q = new LinkedList<>();
+        q.add(index);
+        color[index] = c;
+        while (!q.isEmpty()) {
+            int x = q.remove();
+            for (int e : list[x]) {
+                if (color[e] == 0) {
+                    color[e] = 3 - color[x];
+                    q.add(e);
+                }
+            }
         }
     }
 }
