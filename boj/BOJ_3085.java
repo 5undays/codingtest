@@ -17,7 +17,7 @@ public class BOJ_3085 {
         }
 
         for (int i = 0; i < board_size; i++) {
-            for (int j = i; j < board_size; j++) {
+            for (int j = 0; j < board_size; j++) {
                 // 오른쪽
                 if (i + 1 < board_size) {
                     // 위치 변경
