@@ -19,15 +19,15 @@ public class BOJ_1436 {
 
     private static void getMovieName(int n) {
         int movieName = 666;
-        int cycle = 0, temp = 0, digit = 0;
+        int digit = 0;
         int idx = 1;
         while (true) {
+            int cycle = 0;
             movieName++;
             digit = movieName;
             // 666 연속 검증    
             while (digit > 0) {
-                temp = digit % 10;
-                if (temp == 6) {
+                if (digit % 10 == 6) {
                     cycle++;
                 } else if (cycle < 3) {
                     cycle = 0;
@@ -39,8 +39,6 @@ public class BOJ_1436 {
             if (cycle >= 3) {
                 idx++;
             }
-
-            cycle = 0;
 
             // IDX 번째 영화 제목
             if (idx == n) {
