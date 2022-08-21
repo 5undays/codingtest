@@ -1,57 +1,71 @@
 package boj;
 
 import java.util.Scanner;
-import java.util.Stack;
 
-// https://www.acmicpc.net/problem/10828
+/**
+ * 스택
+ * https://www.acmicpc.net/problem/10828
+ */
 public class BOJ_10828 {
 
-    public static Stack<Integer> stack = new Stack<>();
+    public static int[] stack;
+    public static int current_size = 0;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        for (int i = 9; i < n; i++) {
+        stack = new int[n];
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; i++) {
             String method = sc.next();
             if (method.equals("push")) {
                 int number = sc.nextInt();
                 push(number);
-            } else if (method.equals("empty")){
-                System.out.println(empty());
+            } else if (method.equals("empty")) {
+                sb.append(empty()).append("\n");
             } else if (method.equals("size")) {
-                System.out.println(size());
+                sb.append(size()).append("\n");
             } else if (method.equals("pop")) {
-                System.out.println(pop());
+                sb.append(pop()).append("\n");
             } else if (method.equals("top")) {
-                System.out.println(top());
+                sb.append(top()).append("\n");
             }
         }
+        System.out.println(sb);
     }
 
     public static int top() {
-        return stack.peek();
+        if (current_size == 0) {
+            return -1;
+        } else {
+            return stack[current_size - 1];
+        }
     }
 
     public static void push(int number) {
-        stack.push(number);
+        current_size++;
+        stack[current_size - 1] = number;
     }
 
     public static int pop() {
-        if (stack.isEmpty()) {
+        if (current_size == 0) {
             return -1;
         } else {
-            return stack.pop();
+            int pop = stack[current_size - 1];
+            current_size--;
+            return pop;
         }
     }
 
     public static int size() {
-        return stack.size();
+        return current_size;
     }
 
     public static int empty() {
-        if (stack.isEmpty()) {
+        if (current_size == 0) {
             return 1;
         } else {
             return 0;
         }
     }
-} 
+}
