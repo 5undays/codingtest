@@ -3,8 +3,10 @@ package boj;
 import java.util.Arrays;
 import java.util.Scanner;
 
-// https://www.acmicpc.net/problem/2309
-
+/**
+ * 일곱난쟁이
+ * https://www.acmicpc.net/problem/2309
+ */
 public class BOJ_2309 {
 
     static final int MAX_HEIGHT = 100;

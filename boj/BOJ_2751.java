@@ -1,9 +1,11 @@
 package boj;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
+/**
+ * 수 정렬하기
+ * https://www.acmicpc.net/problem/2751
+ */
 public class BOJ_2751 {
     static int[] arr;
 

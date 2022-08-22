@@ -31,6 +31,13 @@ public class BOJ_15666 {
         System.out.println(go(0, n, m));
     }
 
+    /**
+     * 
+     * @param index
+     * @param n
+     * @param m
+     * @return
+     */
     private static StringBuilder go(int index, int n, int m) {
         if (index == m) {
             StringBuilder sb = new StringBuilder();

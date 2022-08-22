@@ -9,13 +9,33 @@ public class Main {
  
 	public static void main(String[] args) {
  
-		Scanner in = new Scanner(System.in);
-		N = in.nextInt();
-		arr = new int[N];
+		//Scanner in = new Scanner(System.in);
+		//N = in.nextInt();
+		//arr = new int[N];
  
-		nQueen(0);
-		System.out.println(count);
- 
+		//nQueen(0);
+		//System.out.println(count);
+		
+		solution(new int[][]{{60, 50},{30, 70}, {60, 30}, {80, 40}});
+	}
+
+	public static int solution(int[][] sizes) {
+		int answer = 0;
+		int min_heigth = sizes[0][0];
+		int min_width = sizes[0][1];
+		for (int i = 1 ;i < sizes.length; i++) {
+			int[] s = sizes[i];
+			if (s[0] > s[1]) {
+				min_heigth = Math.max(min_heigth, s[0]);
+				min_width = Math.max(min_width, s[1]);
+			} else {
+				min_heigth = Math.max(min_heigth, s[1]);
+				min_width = Math.max(min_width, s[0]);
+			}
+		}
+		
+		answer = min_width;
+		return answer;
 	}
  
 	public static void nQueen(int depth) {

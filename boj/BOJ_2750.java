@@ -2,6 +2,10 @@ package boj;
 
 import java.util.Scanner;
 
+/**
+ * 수 정렬하기
+ * https://www.acmicpc.net/problem/2750
+ */
 public class BOJ_2750 {
 
     public static void main(String[] args) {
@@ -33,16 +37,16 @@ public class BOJ_2750 {
     }
 
     // 카운팅 정렬
-    private void countingSort(int[] arr) {
-        int[] cntArr = new int[1001];
-        for (int i = 0; i < arr.length; i++) {
-            cntArr[i]++;
-        }
+    // private void countingSort(int[] arr) {
+    //     int[] cntArr = new int[1001];
+    //     for (int i = 0; i < arr.length; i++) {
+    //         cntArr[i]++;
+    //     }
 
-        for (int i = 0; i < cntArr.length; i++) {
-            if (cntArr[i] > 0) {
-                System.out.println(i);
-            }
-        }
-    }
+    //     for (int i = 0; i < cntArr.length; i++) {
+    //         if (cntArr[i] > 0) {
+    //             System.out.println(i);
+    //         }
+    //     }
+    // }
 }
