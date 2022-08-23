@@ -1,0 +1,31 @@
+package boj;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class BOJ_25496 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int p = sc.nextInt();
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+        for (int i = 0 ;i < n ;i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        Arrays.sort(arr);
+
+        int limit = 200 - p;
+
+        int answer = 0;
+        for (int x : arr) {
+            if (limit > 0) {
+                limit -= x;
+                answer++;
+            }
+        }
+
+        System.out.println(answer);
+    }
+}
