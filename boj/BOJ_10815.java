@@ -3,6 +3,7 @@ package boj;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 /**
@@ -12,43 +13,47 @@ import java.util.StringTokenizer;
 public class BOJ_10815 {
     static int[] arrN;
     static int[] arrM;
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
         arrN = new int[n];
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
         for (int i = 0; i < n; i++) {
             arrN[i] = Integer.parseInt(st.nextToken());
         }
+
+        Arrays.sort(arrN);
+        StringBuffer sb = new StringBuffer();
         int m = Integer.parseInt(br.readLine());
         arrM = new int[m];
         StringTokenizer st2 = new StringTokenizer(br.readLine(), " ");
         for (int i = 0; i < m; i++) {
-            arrM[i] = Integer.parseInt(st2.nextToken());
-        }
-
-        StringBuffer sb = new StringBuffer();
-        int[] result = countingSort();
-        for (int x : result) {
-            sb.append(x).append(" ");
+            int num = Integer.parseInt(st2.nextToken());
+            if (binarySearch(num)) {
+                sb.append(1).append(" ");
+            } else {
+                sb.append(0).append(" ");
+            }
         }
         System.out.println(sb);
     }
 
-    private static int[] countingSort() {
-        int[] result = new int[arrM.length];
-        boolean[] arr = new boolean[20000001];
-        for (int i = 0; i < arrN.length; i++) {
-            arr[arrN[i]] = true;
-        }
-
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i]) {
-                result[i] = 1;
+    private static boolean binarySearch(int num) {
+        int leftIdx = 0;
+        int rightIdx = arrN.length - 1;
+        while (leftIdx <= rightIdx) {
+            int midIdx = (leftIdx + rightIdx) / 2;
+            int mid = arrN[midIdx];
+            if (mid > num) {
+                rightIdx = midIdx - 1;
+            } else if (mid < num) {
+                leftIdx = midIdx + 1;
+            } else {
+                return true;
             }
         }
-
-        return result;
+        return false;
     }
+
 }
