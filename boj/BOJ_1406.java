@@ -3,9 +3,12 @@ package boj;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 import java.util.Stack;
 
+/**
+ * 에디터
+ * https://www.acmicpc.net/problem/1406
+ */
 public class BOJ_1406 {
 
     static int cursor = 0;
@@ -23,7 +26,7 @@ public class BOJ_1406 {
         while (m-- > 0) {
             String[] line = br.readLine().split(" ");
             char cmd = line[0].charAt(0);
-            if (cmd == 'L') { // 커서를 왼쪽으로 옮김   
+            if (cmd == 'L') { // 커서를 왼쪽으로 옮김
                 if (!left.empty()) {
                     right.push(left.pop());
                 }
