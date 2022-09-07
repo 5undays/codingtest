@@ -13,11 +13,9 @@ public class BOJ_2292 {
         sc.close();
         int a = 1;
         int answer = 1;
-        if (n != 1) {
-            while (a < n) {
-                a = a + (6 * answer);
-                answer++;
-            }
+        while (a < n) {
+            a = a + (6 * answer);
+            answer++;
         }
         System.out.println(answer);
     }
