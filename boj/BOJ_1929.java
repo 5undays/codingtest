@@ -25,7 +25,7 @@ public class BOJ_1929 {
             for (int j = i + i; j <= N; j += i) {
                 prime[j] = true;
             }
-        }
+        }   
         System.out.println(sb);
     }
 
