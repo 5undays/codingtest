@@ -12,10 +12,9 @@ public class PGS_81301 {
     static final String[] word = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
     public static int solution(String s) {
-        int answer = 0;
         for (int i = 0; i < word.length; i++) {
-            s = s.replace(word[i], i + "");
+            s = s.replaceAll(word[i], i + "");
         }
-        return answer;
+        return Integer.parseInt(s);
     }
 }
