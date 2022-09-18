@@ -18,6 +18,7 @@ public class BOJ_10871 {
                 sb.append(m).append(" ");
             }
         }
+        sc.close();
         System.out.println(sb);
     }
 }
