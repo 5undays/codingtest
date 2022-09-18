@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /**
- * 숫자카드
+ * 숫자카드 2
  * https://www.acmicpc.net/problem/10816
  */
 public class BOJ_10816 {
