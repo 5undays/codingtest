@@ -17,11 +17,11 @@ public class BOJ_10814 {
         while (n-- > 0) {
             arr.add(new Person(sc.nextInt(), sc.next()));
         }
+        sc.close();
         Collections.sort(arr, new Comparator<Person>() {
 
             @Override
             public int compare(Person o1, Person o2) {
-                System.out.println("o1.age - o2.age : "+ (o1.age - o2.age));
                 return o1.age - o2.age;
             }
 
