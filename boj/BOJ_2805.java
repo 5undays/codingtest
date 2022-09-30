@@ -11,7 +11,7 @@ public class BOJ_2805 {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt(); // 첫째 줄에 나무의 수
         int m = sc.nextInt(); // 상근이가 집으로 가져가려고 하는 나무의 길이
-        int[] arr = new int[n];
+        int[] arr    = new int[n];
         int max = 0;
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
@@ -25,9 +25,9 @@ public class BOJ_2805 {
         while (min < max) {
             int mid = (min + max) / 2;
             long sum = 0;
-            for (double a : arr) {
-                if (a - mid > 0) {
-                    sum += a - mid;
+            for (int tree : arr) {
+                if (tree - mid > 0) {
+                    sum += tree - mid;
                 }
             }
 
