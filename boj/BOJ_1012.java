@@ -32,7 +32,7 @@ public class BOJ_1012 {
             for (int i = 0; i < m; i++) {
                 for (int j = 0; j < n; j++) {
                     if (map[i][j] == 1 && !visited[i][j]) {
-                        dfs(i, j);
+                        bfs(i, j);
                         answer++;
                     }
                 }
@@ -41,7 +41,7 @@ public class BOJ_1012 {
         }
     }
 
-    public static void dfs(int x, int y) {
+    public static void bfs(int x, int y) {
         Queue<Map> q = new LinkedList<Map>();
         q.add(new Map(x, y));
         while (!q.isEmpty()) {

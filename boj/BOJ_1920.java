@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+/**
+ * 수 찾기
+ * https://www.acmicpc.net/problem/1920
+ */
 public class BOJ_1920 {
     static int n;
     static ArrayList<Integer> list;

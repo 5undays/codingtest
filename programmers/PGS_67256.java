@@ -20,8 +20,8 @@ public class PGS_67256 {
      */
     public static String solution(int[] numbers, String hand) {
         StringBuilder answer = new StringBuilder();
-        int left = 0;
-        int right = 0;
+        int left = 10;
+        int right = 12;
         for (int i = 0; i < numbers.length; i++) {
             int number = numbers[i];
             if (number % 3 == 0 && number > 0) { // 3, 6, 9 R
@@ -50,7 +50,7 @@ public class PGS_67256 {
                 }
             }
         }
-        return answer;
+        return answer.toString();
     }
 
     /**
