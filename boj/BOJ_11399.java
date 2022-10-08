@@ -19,10 +19,8 @@ public class BOJ_11399 {
 
         Arrays.sort(arr);
         int sum = 0;
-        int prev = 0;
         for (int i = 0; i < n; i++) {
-            sum += prev + arr[i];
-            prev += arr[i];
+            sum += arr[i] * (n - i);
         }
         System.out.println(sum);
     }
