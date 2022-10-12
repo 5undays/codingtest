@@ -12,8 +12,11 @@ import java.util.List;
  */
 public class PGS_72411 {
     public static void main(String[] args) {
+        // System.out.println(
+        // solution(new String[] { "ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH" }, new
+        // int[] { 2, 3, 4 }));
         System.out.println(
-                solution(new String[] { "ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH" }, new int[] { 2, 3, 4 }));
+                solution(new String[] { "XYZ", "XWY", "WXA" }, new int[] { 2, 3, 4 }));
     }
 
     static HashMap<String, Integer> h = new HashMap<>();
@@ -34,7 +37,7 @@ public class PGS_72411 {
         }
 
         for (int c : course) {
-            for (String order : orders) {
+            for (String order : orders) {   
                 combination("", order, c);
             }
 
@@ -51,11 +54,17 @@ public class PGS_72411 {
                 h.clear();
             }
         }
-        
+
         Collections.sort(answer);
         return answer;
     }
 
+    /**
+     * 메뉴 조합
+     * @param menu 메뉴 이름
+     * @param order 다음 주문
+     * @param c 메뉴 개수
+     */
     private static void combination(String menu, String order, int c) {
         if (c == 0) {
             h.put(menu, h.getOrDefault(menu, 0) + 1);
