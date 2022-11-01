@@ -12,11 +12,11 @@ import java.util.List;
  */
 public class PGS_72411 {
     public static void main(String[] args) {
-        // System.out.println(
-        // solution(new String[] { "ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH" }, new
-        // int[] { 2, 3, 4 }));
         System.out.println(
-                solution(new String[] { "XYZ", "XWY", "WXA" }, new int[] { 2, 3, 4 }));
+                solution(new String[]{"ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"}, new int[]{2, 3, 4}));
+        // System.out.println(
+        // solution(new String[] { "XYZ", "XWY", "WXA" }, new int[] { 2, 3, 4 }));
+
     }
 
     static HashMap<String, Integer> h = new HashMap<>();
@@ -24,7 +24,7 @@ public class PGS_72411 {
 
     /**
      * 새로 추가하게 될 코스요리의 메뉴 구성을 문자열
-     * 
+     *
      * @param orders 각 손님들이 주문한 단품메뉴들이 문자열 형식으로 담긴 배열
      * @param course 코스요리를 구성하는 단품메뉴들의 갯수가 담긴 배열
      * @return
@@ -37,7 +37,7 @@ public class PGS_72411 {
         }
 
         for (int c : course) {
-            for (String order : orders) {   
+            for (String order : orders) {
                 combination("", order, c);
             }
 
@@ -61,9 +61,10 @@ public class PGS_72411 {
 
     /**
      * 메뉴 조합
-     * @param menu 메뉴 이름
+     *
+     * @param menu  메뉴 이름
      * @param order 다음 주문
-     * @param c 메뉴 개수
+     * @param c     메뉴 개수
      */
     private static void combination(String menu, String order, int c) {
         if (c == 0) {
