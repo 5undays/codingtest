@@ -18,7 +18,7 @@ public class BOJ_19592 {
             double min = x;
             for (int i = 0; i < n - 1; i++) {
                 int v = sc.nextInt();
-                min = Math.min(min, x / v);
+                min = Math.min(min, 1.0 * x / v);
             }
 
             int v = sc.nextInt();
@@ -32,11 +32,8 @@ public class BOJ_19592 {
             int left = 0;
             int right = y;
 
-            while (true) {
+            while (left <= right) {
                 int mid = (left + right) / 2;
-                if (left > right) {
-                    break;
-                }
                 double booster = 1 + 1.0 * (x - mid) / v;
                 if (booster >= min) {
                     left = mid + 1;
