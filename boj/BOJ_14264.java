@@ -11,5 +11,6 @@ public class BOJ_14264 {
         Scanner sc = new Scanner(System.in);
         int l = sc.nextInt();
         System.out.println(Math.sqrt(3) / 4 * l * l);
+
     }
 }
