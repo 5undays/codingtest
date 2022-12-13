@@ -80,10 +80,7 @@ public class BOJ_3055 {
                     if (map[nx][ny] == 'D') { // 도착 지점
                         answer = Math.min(answer, current);
                         return;
-                    } else if (wc[nx][ny] == 0) { // 물이 없는 지역
-                        hc[nx][ny] = current;
-                        hq.add(new Map(nx, ny));
-                    } else if (wc[nx][ny] > current) { // 물이 나중에 도착해서 고슴도치가 지나다닐수 있는 지역
+                    } else if (wc[nx][ny] == 0 || wc[nx][ny] > current) { // 물이 없거나 물이 나중에 도착해서 고슴도치가 지나다닐수 있는 지역
                         hc[nx][ny] = current;
                         hq.add(new Map(nx, ny));
                     }
