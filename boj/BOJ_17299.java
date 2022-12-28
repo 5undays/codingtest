@@ -3,7 +3,10 @@ package boj;
 import java.util.Scanner;
 import java.util.Stack;
 
-// 오등큰수
+/**
+ * 오등큰수
+ * https://www.acmicpc.net/problem/17299
+ */
 public class BOJ_17299 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -31,8 +34,10 @@ public class BOJ_17299 {
             answer[stack.pop()] = -1;
         }
 
+        StringBuilder sb =new StringBuilder();
         for (int i = 0; i < n; i++) {
-            System.out.println(answer[i]);
+            sb.append(answer[i]).append(" ");
         }
+        System.out.println(sb);
     }
 }
