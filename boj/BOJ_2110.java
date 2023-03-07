@@ -24,7 +24,7 @@ public class BOJ_2110 {
         int result = 0;
         int left = 1;
         int right = x[n - 1] - x[0];
-        while (left < right) {
+        while (left <= right) {
             int mid = (left + right) / 2;
 
             int count = 1;
@@ -36,15 +36,14 @@ public class BOJ_2110 {
                 }
             }
 
-            if (count == c) {
-                left = mid + 1;
+            if (count >= c) {
                 result = Math.max(result, mid);
+                left = mid + 1;
             } else {
-                right = mid;
+                right = mid - 1;
             }
         }
 
         System.out.println(result);
     }
 }
-    
