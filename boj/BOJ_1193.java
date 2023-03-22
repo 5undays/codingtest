@@ -17,7 +17,6 @@ public class BOJ_1193 {
         }
 
         int diff = end - x;
-        System.out.println(line + ", " + end);
         if (line % 2 == 0) {
             System.out.println((line - diff) + "/" + (diff + 1));
         } else {
