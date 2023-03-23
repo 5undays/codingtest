@@ -7,6 +7,7 @@ import java.util.Scanner;
  * https://www.acmicpc.net/problem/2941
  */
 public class BOJ_2941 {
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String s = sc.next();
@@ -37,4 +38,17 @@ public class BOJ_2941 {
 
         System.out.println(answer);
     }
+//
+//    static String[] alphabet = {"c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z="};
+//
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        String s = sc.next();
+//
+//        for (int i = 0; i < alphabet.length; i++) {
+//            s = s.replace(alphabet[i], "a");
+//        }
+//
+//        System.out.println(s.length());
+//    }
 }
