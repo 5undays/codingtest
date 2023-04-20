@@ -23,9 +23,7 @@ public class BOJ_5052 {
             Arrays.sort(arr);
             String result = "YES";
             for (int i = 0; i < n - 1; i++) {
-                if (arr[i + 1].length() < arr[i].length()) {
-                    continue;
-                } else if (arr[i + 1].startsWith(arr[i])) {
+                if (arr[i + 1].startsWith(arr[i])) {
                     result = "NO";
                     break;
                 }
