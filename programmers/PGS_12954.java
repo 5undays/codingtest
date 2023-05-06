@@ -16,7 +16,7 @@ public class PGS_12954 {
     public static long[] solution(int x, int n) {
         long[] answer = new long[n];
         int index = 0;
-        int value = x;
+        long value = x;
         while (index < n) {
             answer[index++] = value;
             value += x;
