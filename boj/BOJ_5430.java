@@ -30,10 +30,10 @@ public class BOJ_5430 {
             boolean isRight = true;
             boolean exp = false;
             for (int i = 0; i < p.length(); i++) {
-                char recomend = p.charAt(i);
-                if (recomend == 'R') {
+                char recommend = p.charAt(i);
+                if (recommend == 'R') {
                     isRight = !isRight;
-                } else if (recomend == 'D') { // 버리기
+                } else if (recommend == 'D') { // 버리기
                     if (d.peek() == null) {
                         exp = true;
                         break;
