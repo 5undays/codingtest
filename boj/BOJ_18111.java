@@ -27,7 +27,7 @@ public class BOJ_18111 {
             }
         }
 
-        int seconds = 1000000000;
+        int seconds = Integer.MAX_VALUE;
         int height = 0;
         for (int h = min; h <= max; h++) {
             int remove = 0;
@@ -50,7 +50,7 @@ public class BOJ_18111 {
             }
 
             int time = remove * 2 + add;
-            if (time <= seconds && h >= height) {
+            if (time <= seconds) {
                 seconds = time;
                 height = h;
             }
