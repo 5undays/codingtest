@@ -15,7 +15,7 @@ public class PGS_181894 {
     }
 
     public static int[] solution(int[] arr) {
-        int min = 10, max = 0;
+        int min = 100000, max = 0;
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == 2) {
                 min = Math.min(min, i);
@@ -24,12 +24,13 @@ public class PGS_181894 {
         }
 
         if (min <= max) {
-            int[] answer = new int[max - min + 1];
-            int index = 0;
-            for (int i = min; i <= max; i++) {
-                answer[index++] = arr[i];
-            }
-            return answer;
+//            int[] answer = new int[max - min + 1];
+//            int index = 0;
+//            for (int i = min; i <= max; i++) {
+//                answer[index++] = arr[i];
+//            }
+//            return answer;
+            return Arrays.copyOfRange(arr, min, max + 1);
         } else {
             return new int[]{-1};
         }
