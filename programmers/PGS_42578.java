@@ -18,11 +18,7 @@ public class PGS_42578 {
 
         for (int i = 0; i < clothes.length; i++) {
             String type = clothes[i][1];
-            if (!hm.containsKey(type)) {
-                hm.put(type, 1);
-            } else {
-                hm.put(type, hm.get(type) + 1);
-            }
+            hm.put(type, hm.getOrDefault(type, 0) + 1);
         }
 
         Iterator<Integer> iter = hm.values().iterator();
