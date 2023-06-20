@@ -1,22 +1,29 @@
 package boj;
 
-import java.util.Scanner;
-import java.util.Stack;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
+/**
+ * 단어 뒤집기
+ * https://www.acmicpc.net/problem/9093
+ */
 public class BOJ_9093 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        for (int i = 0 ; i < n ; i++) {
-            String text = sc.next();
-            Stack<Character> stack = new Stack<>();
-            for (int j = 0; j < text.length(); j++) {
-                stack.push(text.charAt(j));
-            }
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine());
 
-            for (int u = 0 ; u < text.length(); u++) {
-                System.out.print(stack.pop());
+        StringBuilder sb = new StringBuilder();
+        while (t-- > 0) {
+            String[] text = br.readLine().split(" ");
+            for (int i = 0; i < text.length; i++) {
+                for (int j = text[i].length() - 1; j >= 0; j--) {
+                    sb.append(text[i].charAt(j));
+                }
+                sb.append(" ");
             }
+            sb.append("\n");
         }
+        System.out.println(sb);
     }
 }
