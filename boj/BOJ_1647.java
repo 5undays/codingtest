@@ -36,13 +36,14 @@ public class BOJ_1647 {
         int answer = 0;
         int count = 0;
         Collections.sort(arr);
+
         for (House house : arr) {
             if (union(house.current, house.next)) {
-                answer += house.cost;
-                count++;
                 if (count == n - 2) {
                     break;
                 }
+                answer += house.cost;
+                count++;
             }
         }
         System.out.println(answer);
