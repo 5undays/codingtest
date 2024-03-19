@@ -20,18 +20,18 @@ public class PGS_258712 {
             hm.put(s, new HashMap<>());
         }
 
-        HashMap<String, Integer> givenHm = new HashMap<>();
-        HashMap<String, Integer> giverHm = new HashMap<>();
+        HashMap<String, Integer> takeHm = new HashMap<>();
+        HashMap<String, Integer> giveHm = new HashMap<>();
 
         for (int i = 0; i < gifts.length; i++) {
             String[] arr = gifts[i].split(" ");
-            String giver = arr[0];
-            String given = arr[1];
+            String give = arr[0];
+            String take = arr[1];
 
-            hm.get(giver).put(given, hm.get(giver).getOrDefault(given, 0) + 1);
+            hm.get(give).put(take, hm.get(give).getOrDefault(take, 0) + 1);
 
-            giverHm.put(giver, giverHm.getOrDefault(giver, 0) + 1);
-            givenHm.put(given, givenHm.getOrDefault(given, 0) + 1);
+            giveHm.put(give, giveHm.getOrDefault(give, 0) + 1);
+            takeHm.put(take, takeHm.getOrDefault(take, 0) + 1);
         }
 
         HashMap<String, Integer> gift = new HashMap<>();
@@ -41,19 +41,19 @@ public class PGS_258712 {
                 String a = friends[i];
                 String b = friends[j];
 
-                int give = hm.get(a).getOrDefault(b, 0);
-                int take = hm.get(b).getOrDefault(a, 0);
+                int aNumber = hm.get(a).getOrDefault(b, 0);
+                int bNumber = hm.get(b).getOrDefault(a, 0);
 
-                if (give > take) {
+                if (aNumber > bNumber) {
                     gift.put(a, gift.getOrDefault(a, 0) + 1);
-                } else if (give < take) {
+                } else if (aNumber < bNumber) {
                     gift.put(b, gift.getOrDefault(b, 0) + 1);
                 } else {
-                    int t = giverHm.getOrDefault(a, 0) - givenHm.getOrDefault(a, 0);
-                    int k = giverHm.getOrDefault(b, 0) - givenHm.getOrDefault(b, 0);
-                    if (t < k) {
+                    int aGift = giveHm.getOrDefault(a, 0) - takeHm.getOrDefault(a, 0);
+                    int bGift = giveHm.getOrDefault(b, 0) - takeHm.getOrDefault(b, 0);
+                    if (aGift < bGift) {
                         gift.put(b, gift.getOrDefault(b, 0) + 1);
-                    } else if (t > k) {
+                    } else if (aGift > bGift) {
                         gift.put(a, gift.getOrDefault(a, 0) + 1);
                     }
                 }
