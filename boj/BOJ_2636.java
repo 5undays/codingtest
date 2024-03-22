@@ -25,12 +25,10 @@ public class BOJ_2636 {
         a = Integer.parseInt(st.nextToken());
         b = Integer.parseInt(st.nextToken());
         map = new int[a][b];
-        Queue<int[]> q = new LinkedList<>();
         for (int i = 0; i < a; i++) {
             st = new StringTokenizer(br.readLine());
             for (int j = 0; j < b; j++) {
                 map[i][j] = Integer.parseInt(st.nextToken());
-                q.add(new int[] {i, j});
                 if (map[i][j] == 1) {
                     cheese++;
                 }
@@ -39,7 +37,7 @@ public class BOJ_2636 {
 
         int answer = 0;
         int oneHour = 0 ;
-        while (cheese != 0) {
+        while (cheese > 0) {
             oneHour = cheese;
             bfs();
             answer++;
