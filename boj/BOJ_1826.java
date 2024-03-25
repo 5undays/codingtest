@@ -20,35 +20,25 @@ public class BOJ_1826 {
 
         st = new StringTokenizer(br.readLine());
         int l = Integer.parseInt(st.nextToken()); // 성경이의 위치에서 마을까지의 거리
-        int fuel = Integer.parseInt(st.nextToken()); // 트럭에 원래 있던 연료의 양
+        int f = Integer.parseInt(st.nextToken()); // 트럭에 원래 있던 연료의 양
 
         q.add(new int[] {l, 0});
         int answer = 0;
         int current = 0; // 현재 위치
-        while (q.size() > 1) {
-            if (current >= l) {
-                break;
-            }
 
-            int[] station = q.poll();
-
-            fuel -= (station[0] - current);
-            current = station[0]; // 현재 위치
-
-            if (fuel < 0) {
-                answer = -1;
-                break;
-            }
-
-            if (current == l) {
-                break;
-            }
-
-            int[] next = q.peek();
-
-            if (fuel < next[0] - current) {
+        PriorityQueue<Integer> prevStation = new PriorityQueue<>(Collections.reverseOrder());
+        while (!q.isEmpty()) {
+            if (q.peek()[0] <= f + current) {
+                int[] station = q.poll();
+                f -= (station[0] - current);
+                current = station[0];
+                prevStation.add(station[1]);
+            } else if (!prevStation.isEmpty()) {
+                f += prevStation.poll();
                 answer++;
-                fuel += station[1];
+            } else {
+                System.out.println(-1);
+                System.exit(0);
             }
         }
 
