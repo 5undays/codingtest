@@ -20,8 +20,8 @@ public class BOJ_1065 {
             for (int i = 100; i <= n; i++) {
 
                 int hun = i / 100; // 백의 자릿수
-				int ten = (i / 10) % 10; // 십의 자릿수
-				int one = i % 10;
+                int ten = (i / 10) % 10; // 십의 자릿수
+                int one = i % 10;
 
                 if ((hun - ten) == (ten - one)) {
                     answer++;
