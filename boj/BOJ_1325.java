@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 /**
@@ -12,7 +13,7 @@ import java.util.StringTokenizer;
  */
 public class BOJ_1325 {
     static boolean[] visited;
-    static ArrayList<Integer>[] computers;
+    static LinkedList<Graph> computers;
     static int[] arr;
 
     public static void main(String[] args) throws IOException {
@@ -20,9 +21,9 @@ public class BOJ_1325 {
         StringTokenizer st = new StringTokenizer(br.readLine());
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
-        computers = new ArrayList[n + 1];
+        computers = new LinkedList<Graph>();
         for (int i = 0; i <= n; i++) {
-            computers[i] = new ArrayList<>();
+            computers.add(new Graph(i , null));
         }
 
         visited = new boolean[n + 1];
@@ -31,7 +32,7 @@ public class BOJ_1325 {
             st = new StringTokenizer(br.readLine());
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
-            computers[a].add(b);
+            //computers.add(a, );
         }
 
         for (int i = 1; i <= n; i++) {
@@ -54,12 +55,22 @@ public class BOJ_1325 {
     }
 
     private static void dfs(int x) {
-        for (int computer : computers[x]) {
-            if (!visited[computer]) {
-                arr[computer]++;
-                visited[computer] = true;
-                dfs(computer);
-            }
+        //for (int computer : computers[x]) {
+          //  if (!visited[computer]) {
+          //      arr[computer]++;
+          //      visited[computer] = true;
+          //      dfs(computer);
+          //  }
+        //}
+    }
+
+    static class Graph {
+        int value;
+        Graph next;
+
+        Graph(int value,Graph next) {
+            this.value = value;
+            this.next = next;
         }
     }
 }
