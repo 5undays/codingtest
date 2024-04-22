@@ -15,7 +15,7 @@ public class BOJ_1967 {
     static boolean[] visited;
     static int n;
     static ArrayList<Node>[] tree;
-    static int length = 0;
+    static int endNode = 0;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -36,16 +36,16 @@ public class BOJ_1967 {
         }
 
         visited = new boolean[n + 1];
-        dfs(1, 0);
+        dfs(n, 0);
         visited = new boolean[n + 1];
-        dfs(length, 0);
+        dfs(endNode, 0);
         System.out.println(answer);
     }
 
     private static void dfs(int current, int weight) {
         if (answer < weight) {
             answer = weight;
-            length = current;
+            endNode = current;
         }
         visited[current] = true;
         for (Node n : tree[current]) {
