@@ -11,54 +11,56 @@ import java.util.StringTokenizer;
  * https://www.acmicpc.net/problem/1967
  */
 public class BOJ_1967 {
-    static int answer = 0;
+    static int answer = Integer.MIN_VALUE;
     static boolean[] visited;
     static int n;
-    static ArrayList<Node> arr;
+    static ArrayList<Node>[] tree;
+    static int length = 0;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         n = Integer.parseInt(br.readLine());
-        arr = new ArrayList<>();
+        tree = new ArrayList[n + 1];
+        for (int i = 1; i <= n; i++) {
+            tree[i] = new ArrayList<>();
+        }
+
         StringTokenizer st;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n - 1; i++) {
             st = new StringTokenizer(br.readLine());
             int parent = Integer.parseInt(st.nextToken());
             int child = Integer.parseInt(st.nextToken());
             int weight = Integer.parseInt(st.nextToken());
-            Node node = new Node(parent, child, weight);
-            arr.add(node);
+            tree[parent].add(new Node(child, weight));
+            tree[child].add(new Node(parent, weight));
         }
 
-        for (int i = 0; i < n; i++) {
-            visited = new boolean[n + 1];
-            dfs(arr.get(i).parent, 0,0);
-        }
-
+        visited = new boolean[n + 1];
+        dfs(1, 0);
+        visited = new boolean[n + 1];
+        dfs(length, 0);
         System.out.println(answer);
     }
 
-    private static void dfs(int current, int depth, int weight) {
-        if (visited[current]) {
-            return;
+    private static void dfs(int current, int weight) {
+        if (answer < weight) {
+            answer = weight;
+            length = current;
         }
-
-        if (depth == n) {
-            answer = Math.max(answer, weight);
-            return;
-        }
-
         visited[current] = true;
-        //dfs(arr., depth + 1, weight + arr.);
+        for (Node n : tree[current]) {
+            if (!visited[n.value]) {
+                dfs(n.value, weight + n.weight);
+            }
+        }
     }
 
     static class Node {
-        int parent;
-        int child;
+        int value;
         int weight;
 
-        Node(int parent, int child, int weight) {
-            this.parent = parent;
-            this.child = child;
+        Node(int value, int weight) {
+            this.value = value;
             this.weight = weight;
         }
     }
