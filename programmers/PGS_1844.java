@@ -32,7 +32,7 @@ public class PGS_1844 {
             Map m = q.poll();
             if (m.x >= 0 && m.x < maps.length && m.y >= 0 && m.y < maps[0].length) {
                 if (m.x == maps.length - 1 && m.y == maps[0].length - 1) {
-                    answer = m.count + 1;
+                    answer = m.count +1;
                     break;
                 }
                 if (!check[m.x][m.y] && maps[m.x][m.y] == 1) {
