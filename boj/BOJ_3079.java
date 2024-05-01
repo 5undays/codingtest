@@ -3,7 +3,6 @@ package boj;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 /**
@@ -14,25 +13,36 @@ public class BOJ_3079 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int n = Integer.parseInt(st.nextToken()); // 입국심사대
-        int m = Integer.parseInt(st.nextToken()); // 친구 명수
+        long n = Integer.parseInt(st.nextToken()); // 입국심사대
+        long m = Integer.parseInt(st.nextToken()); // 친구 명수
 
-        int[] station = new int[n];
+        long[] station = new long[(int)n];
+        long min = Long.MAX_VALUE;
+        long max = Long.MIN_VALUE;
+
         for (int i = 0; i < n; i++) {
-            station[i] = Integer.parseInt(br.readLine());
+            station[i] = Long.parseLong(br.readLine());
+            min = Math.min(min, station[i]);
+            max = Math.max(max, station[i]);
         }
 
-        Arrays.sort(station);
+        max *= m;
 
-        int answer = 0;
-        for (int i = n - 1; i >= 0; i--) {
-            int k = m / station[i];
-            m -= k;
-            answer = k * station[i];
-            if (m == 0) {
-                break;
+        while (min <= max) {
+            long mid = (max + min) / 2;
+
+            long count = 0;
+            for (int i = 0; i < n; i++) {
+                count += mid / station[i];
+                if (count > m) { break; }
+            }
+
+            if (count < m) {
+                min = mid + 1;
+            } else {
+                max = mid - 1;
             }
         }
-        System.out.println(answer);
+        System.out.println(min);
     }
 }
