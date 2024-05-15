@@ -7,48 +7,66 @@ import java.util.HashMap;
 import java.util.StringTokenizer;
 
 public class BOJ_4195 {
+    static HashMap<String, Integer> nodes;
     static int[] parent;
-    static HashMap<String, String> map;
+    static int[] network;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int t = Integer.parseInt(br.readLine());
         StringTokenizer st;
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < t; i++) {
             int f = Integer.parseInt(br.readLine());
-            map = new HashMap<>();
+            nodes = new HashMap<>();
+            parent = new int[f * 2];
+            network = new int[f * 2];
+            int index = 0;
+
+            for (int j = 0 ; j < f * 2; j++) {
+                parent[j] = j;
+                network[j] = 1;
+            }
+
             for (int j = 0; j < f; j++) {
                 st = new StringTokenizer(br.readLine());
-                String friend = st.nextToken();
-                String friend2 = st.nextToken();
-                map.put(friend, friend2);
-                map.put(friend2, friend);
+                String a = st.nextToken();
+                String b = st.nextToken();
 
+                if (!nodes.containsKey(a)) {
+                    nodes.put(a, index++);
+                }
+                if (!nodes.containsKey(b)) {
+                    nodes.put(b, index++);
+                }
+
+                sb.append(union(nodes.get(a), nodes.get(b))).append("\n");
             }
         }
+
+        System.out.println(sb);
     }
 
-    /**
-     * 부모 노드 찾기
-     * @param x
-     * @return
-     */
-    /*static String find(String x) {
-        if (x == parent[x]) {
-            return x;
+    private static int union(int a, int b) {
+        a = find(a);
+        b = find(b);
+
+        if (a != b) {
+            parent[b] = a;
+            network[a] += network[b];
+            parent[a] = b;
+            network[b] += network[a];
         }
-        return parent[x] = find(parent[x]);
+
+        return network[a];
     }
 
-    *//**
-     * 부모 노드를 병합
-     * @param a
-     * @param b
-     *//*
-    static void union(int a, int b) {
-        x = find(a);
-        y = find(b);
-        if (x != y) {
-            parent[y] = x;
+    private static int find(int a) {
+        if (parent[a] == a) {
+            return a;
         }
-    }*/
+
+        return parent[a] = find(parent[a]);
+    }
+
 }
