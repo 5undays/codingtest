@@ -28,12 +28,8 @@ public class BOJ_13305 {
         long current = oil[0];
         long answer = arr[1] * oil[0];
         for (int i = 1; i < n; i++) {
-            if (current < oil[i]) {
-                answer += current * arr[i + 1];
-            } else {
-                current = oil[i];
-                answer += arr[i + 1] * current;
-            }
+            current = Math.min(oil[i], current);
+            answer += arr[i + 1] * current;
         }
         System.out.println(answer);
     }
