@@ -20,7 +20,7 @@ public class BOJ_2293 {
             arr[i] = Integer.parseInt(br.readLine());
         }
 
-        int[] dp = new int[10001];
+        int[] dp = new int[k + 1];
         dp[0] = 1;
         for (int i = 1; i <= n; i++) {
             for (int j = arr[i]; j <= k; j++) {
