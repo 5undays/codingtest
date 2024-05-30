@@ -42,7 +42,6 @@ public class BOJ_7569 {
             }
         }
 
-        int answer = 0;
         while (!q.isEmpty()) {
             int[] xy = q.poll();
             int z = xy[0];
