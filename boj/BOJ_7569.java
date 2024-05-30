@@ -19,7 +19,7 @@ public class BOJ_7569 {
     static int m;
     static int n;
     static int h;
-    static boolean[][][] visited;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
