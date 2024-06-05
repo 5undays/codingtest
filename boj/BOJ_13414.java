@@ -16,7 +16,7 @@ public class BOJ_13414 {
         int k = Integer.parseInt(st.nextToken()); // 과목의 수강 가능 인원
         int l = Integer.parseInt(st.nextToken()); // 학생들이 버튼을 클릭한 순서를 기록한 대기목록의 길이
 
-        LinkedList<String> arr = new LinkedList<>();
+        LinkedHashSet<String> arr = new LinkedHashSet<>();
 
         for (int i = 0; i < l; i++) {
             String s = br.readLine();
