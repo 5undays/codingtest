@@ -8,70 +8,31 @@ import java.util.Scanner;
  */
 public class BOJ_15650 {
     static StringBuffer sb = new StringBuffer();
-    static int[] a = new int[10];
-    static boolean[] c = new boolean[10];
+    static int[] arr;
+    static int n, m;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int m = sc.nextInt();
-        go(0, 1, n, m);
+        n = sc.nextInt();
+        m = sc.nextInt();
+        arr = new int[m];
+        go(0, 1);
         System.out.println(sb.toString());
-        go2(1, 0, n, m);
     }
 
-    /**
-     * 1 부터 n 까지 중복 없는 오름차순 으로 뽑는다
-     * 
-     * @param index 현재 인덱스
-     * @param start 시작 인덱스
-     * @param n     수의 범위
-     * @param m     중복 없이 뽑는 갯수
-     */
-    public static void go(int index, int start, int n, int m) {
-        if (index == m) {
-            for (int i = 0; i < m; i++) {
-                sb.append(a[i]);
-                if (i != m - 1)
-                    sb.append(" ");
+    public static void go(int depth, int start) {
+        if (depth == m) {
+            for (int x : arr) {
+                sb.append(x).append(" ");
             }
             sb.append("\n");
+            return;
         }
 
-        for (int i = start; i <= m; i++) {
-            if (!c[i]) {
-                c[i] = true;
-                a[index] = i;
-                go(index + 1, start + 1, n, m);
-                c[i] = false;
-            }
+        for (int i = start; i <= n; i++) {
+            arr[depth] = i;
+            go(depth + 1, i + 1);
         }
     }
 
-    /**
-     * 1 부터 n 까지 중복 없는 오름차순 으로 뽑는다
-     * 
-     * @param index    현재 인덱스
-     * @param selected 지금까지 선택한 수의 갯수
-     * @param n        수의 범위
-     * @param m        수의 갯수
-     */
-    public static void go2(int index, int selected, int n, int m) {
-        if (selected == m) {
-            for (int i = 0; i < m; i++) {
-                sb.append(a[i]);
-                if (i != m - 1) {
-                    sb.append(" ");
-                }
-                sb.append("\n");
-            }
-        }
-
-        if (index < n) {
-            a[selected] = index;
-            go2(index + 1, selected + 1, n, m);
-            a[selected] = 0;
-            go2(index + 1, selected, n, m);
-        }
-    }
 }
