@@ -18,8 +18,6 @@ public class BOJ_15651 {
         System.out.println(sb.toString());
     }
 
-    static boolean[] c = new boolean[10];
-
     public static void go(int index, int n, int m) {
         if (index == m) {
             for (int i = 0; i < m; i++) {
