@@ -8,32 +8,30 @@ import java.util.Scanner;
  */
 public class BOJ_15651 {
     static StringBuffer sb = new StringBuffer();
-    static int[] a = new int[10];
+    static int[] arr;
+    static int n;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
+        n = sc.nextInt();
         int m = sc.nextInt();
-        go(0, n, m);
+        arr = new int[m];
+        go(0, m);
         System.out.println(sb.toString());
     }
 
-    public static void go(int index, int n, int m) {
+    public static void go(int index, int m) {
         if (index == m) {
-            for (int i = 0; i < m; i++) {
-                sb.append(a[i]);
-                if (i != m - 1)
-                    sb.append(" ");
+            for (int x : arr) {
+                sb.append(x).append(" ");
             }
             sb.append("\n");
+            return;
         }
 
-        if (index <= n) {
-            for (int i = 1; i <= n; i++) {
-                a[index] = i;
-                go(index + 1, n, m);
-
-            }
+        for (int i = 1; i <= n; i++) {
+            arr[index] = i;
+            go(index + 1, m);
         }
     }
 }
