@@ -31,11 +31,9 @@ public class BOJ_15652 {
             sb.append("\n");
         }
 
-        if (index < n) {
-            for (int i = start; i <= n; i++) {
-                a[index] = i;
-                go(index + 1, i, n, m);
-            }
+        for (int i = start; i <= n; i++) {
+            a[index] = i;
+            go(index + 1, i, n, m);
         }
     }
 }
