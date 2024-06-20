@@ -11,6 +11,7 @@ public class BOJ_15654 {
     static boolean[] c = new boolean[10];
     static int[] a = new int[10];
     static int[] num = new int[10];
+    static StringBuffer sb = new StringBuffer();
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -23,8 +24,6 @@ public class BOJ_15654 {
         go(0, n, m);
         System.out.println(sb.toString());
     }
-
-    static StringBuffer sb = new StringBuffer();
 
     public static void go(int index, int n, int m) {
         if (index == m) {
