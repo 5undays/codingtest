@@ -9,36 +9,41 @@ import java.util.Scanner;
  */
 public class BOJ_15655 {
     static StringBuffer sb = new StringBuffer();
-    static int[] a = new int[10];
-    static int[] data = new int[10];
+    static int[] data;
+    static int[] arr;
+    static boolean[] c = new boolean[10];
+    static int n, m;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int m = sc.nextInt();
+        n = sc.nextInt();
+        m = sc.nextInt();
+        data = new int[n];
         for (int i = 0; i < n; i++) {
             data[i] = sc.nextInt();
         }
-        go(0, n, m);
+        arr = new int[m];
+        Arrays.sort(data);
+        go(0, 0);
         System.out.println(sb.toString());
     }
 
-
-    public static void go(int start, int n, int m) {
-        if (start == m) {
-            for (int i = 0; i < m; i++) {
-                sb.append(data[a[i]]);
-                if (i != m - 1) {
-                    sb.append(" ");
-                }
+    private static void go(int depth, int start) {
+        if (depth == m) {
+            for (int val : arr) {
+                sb.append(val).append(" ");
             }
             sb.append("\n");
             return;
         }
 
         for (int i = start; i < n; i++) {
-            a[start] = i;
-            go(start + 1, n, m);
+            if (!c[i]) {
+                c[i] = true;
+                arr[depth] = data[i];
+                go(depth + 1,i);
+                c[i] = false;
+            }
         }
     }
 }
