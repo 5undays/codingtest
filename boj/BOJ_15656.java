@@ -9,8 +9,8 @@ import java.util.Scanner;
  */
 public class BOJ_15656 {
     static int n, m;
-    static int[] data = new int[10];
-    static int[] arr = new int[10];
+    static int[] data;
+    static int[] arr;
     static StringBuilder sb = new StringBuilder();
     static boolean[] visited;
     public static void main(String[] args) {
