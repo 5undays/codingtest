@@ -9,8 +9,8 @@ import java.util.Scanner;
  */
 public class BOJ_15666 {
     static int[] data;
-    static int[] temp = new int[10];
-    static int[] a = new int[10];
+    static boolean[] visited = new boolean[10];
+    static int[] arr;
     static int n, m;
     static StringBuilder sb = new StringBuilder();
 
@@ -19,26 +19,31 @@ public class BOJ_15666 {
         n = sc.nextInt();
         m = sc.nextInt();
         data = new int[n];
+        arr = new int[m];
         for (int i = 0; i < n; i++) {
             data[i] = sc.nextInt();
         }
         Arrays.sort(data);
-        go(0);
+        go(0, 0);
         System.out.println(sb);
     }
 
-    private static void go(int depth) {
+    private static void go(int depth, int index) {
         if (depth == m) {
-            for (int i = 0; i < m; i++) {
-                sb.append(temp[a[i]]).append(" ");
+            for (int x : arr) {
+                sb.append(x).append(" ");
             }
             sb.append("\n");
             return;
         }
 
-        for (int i = 0; i < n; i++) {
-            a[depth] = i;
-            go(depth + 1);
+        int x = 0;
+        for (int i = index; i < n; i++) {
+            if (x != data[i] ) {
+                x = data[i];
+                arr[depth] = data[i];
+                go(depth + 1, i);
+            }
         }
     }
 }
